@@ -24,7 +24,9 @@ import SaveIcon  from '../../../img/save.svg';
 
 
 
+
 const DesignProduct = (props) => (
+
   <Container className="dashboard">
     <Row>
       <Col md={12}>
@@ -41,7 +43,7 @@ const DesignProduct = (props) => (
               <CanvasPreview />
               <div className="tools-canvas-container">
                 <CanvasTool source={Upload} name={'UPLOAD'} height={24} />
-                <CanvasTool source={Text} name={'TEXT'} height={24} />
+                <div><CanvasTool source={Text} name={'TEXT'} height={24} /></div>
                 <CanvasTool source={Shapes} name={'SHAPES'} height={24} />
                 <CanvasTool source={ClipArts} name={'CLIPARTS'} height={24} />
                 <CanvasTool source={Emojis} name={'EMOJIS'} height={24} />

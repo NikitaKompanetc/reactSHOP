@@ -15,13 +15,14 @@ class CanvasPreview extends PureComponent {
     this.canvasRender = this.canvasRender.bind(this);
     this.canvasik = ''
     console.log(document.getElementById('c'))
+    
   }
 
 
   componentDidMount() {
     this.canvasik = new fabric.Canvas('c');
     this.canvasRender()
-
+    
   }
 
 
@@ -43,31 +44,24 @@ class CanvasPreview extends PureComponent {
       image.lockMovementX = true;
       image.lockMovementY = true;
       image.lockRotation = true;
+      
       image.scaleToHeight(300);
       image.scaleToWidth(300);
       canvas.add(image);
-
+      canvas.moveTo(image, 1);
+      image.moveTo(1);
     }
-      let textbox = new fabric.Textbox('Lorum ipsum dolor sit amet', {
-        left: 100,
-        top: 50,
-        width: 150,
-        fontSize: 20,
-        fill: '#ff0000'
-      });
-      canvas.add(textbox);
+      
       canvas.requestRenderAll();
     }else {
-      var myCanvas = document.getElementById('c');
-      var ctx = myCanvas.getContext('2d');
-      var img = new Image;
-      img.onload = function () {
-        ctx.drawImage(img, 0, 0); // Or at whatever offset you like
-      };
-      img.src = localStorage.getItem('canvas');
-      console.log(68, canvas)
-      image = new fabric.Image(imgEl);
+      canvas.loadFromJSON(localStorage.getItem('canvas'), canvas.renderAll.bind(canvas));
     }
+   var image;
+   setTimeout(() => {
+    console.log(65, canvas._objects[1])
+    image = canvas._objects[1]
+   }, 500);
+   
     document.getElementById('hue').onclick = function () {
       image.filters.push(new fabric.Image.filters.BlendColor({
         color: 'red', // make it red!  props.colorProduct
@@ -78,18 +72,28 @@ class CanvasPreview extends PureComponent {
       canvas.add(image);
       canvas.requestRenderAll();
     };
-  
+    let textbox = new fabric.Textbox('Lorum ipsum dolor sit amet', {
+      left: 100,
+      top: 50,
+      width: 150,
+      fontSize: 20,
+      fill: '#ff0000'
+    });
+    
+    canvas.add(textbox);
+    canvas.moveTo(textbox, 99);
+    textbox.moveTo(99);
+
+
     document.getElementById('nextstep').onclick = function () {
       canvas.requestRenderAll();
-     let dataURL = canvas.toDataURL({ format: 'canvas', })
-      console.log(dataURL)
-      localStorage.setItem('canvas', dataURL);
+      localStorage.setItem('canvas', JSON.stringify(canvas))
     }
-
-
   }
 
   render() {
+    console.log(27, this.props)
+    console.log(28, this.props.colorProduct)
     return (
       <div>
         <button id="hue">Change to random color</button>
@@ -100,6 +104,7 @@ class CanvasPreview extends PureComponent {
         <div className='canvas-containers'>
           <canvas id="c" width={650} height={350}></canvas>
         </div>
+        <div>{this.props.giveNumber}</div>
       </div>
     );
   };

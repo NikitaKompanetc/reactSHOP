@@ -14,6 +14,8 @@ const FinalizeProduct = (props) => {
   const [color, setColor] = useState('#FF0000');
   console.log(15, color)
   console.log(16, setColor)
+
+  const [numb, setNumb] = useState(1);
   
 return(
   <Container className="dashboard">
@@ -30,14 +32,14 @@ return(
               <div className="title-design">Product options and variations</div>
               <div className="descr-design">Choose which variations and options you want to offer you customers</div>
               <div className="canvas-container">
-                <CanvasPreview colorProduct={color} />
+                <CanvasPreview colorProduct={color} giveNumber={numb} />
               </div>
               <div className='canvas-instruments--container'>
                 <div className='color-select'>
                   <div className="color-group">
                     <div className='color-block color1' onClick={() => setColor('#ABABAB')}>1</div>
                     <div className='color-block color2' onClick={() => setColor('#191919')}>2</div>
-                    <div className='color-block color3'>3</div>
+                    <div className='color-block color3' onClick={() => setNumb(numb + 1)}>3</div>
                     <div className='color-block color3'>4</div>
                     <div className='color-block color5'>5</div>
                     <div className='color-block color6'>6</div>

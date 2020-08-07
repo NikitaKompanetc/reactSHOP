@@ -1,0 +1,120 @@
+
+.catalog-wrapper {
+  .card-body {
+    padding: 0px 30px 30px 30px;
+  }
+}
+.catalog-item--container {
+  .availability {
+    display: flex;
+    justify-content: flex-end;
+
+    .avail {
+      background: #C4C41E;
+      padding: .5rem;
+      color: #ffffff;
+    }
+    .not-avail {
+      background:  #E78624;
+      padding: .5rem;
+      color: #fff;
+    }
+
+  }
+  .image-item {
+    margin: 1rem 0;
+  }
+  .info-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+
+    .params-info-item {
+      flex-basis: 80%;
+
+      .name-item {
+        font-weight: bold;
+        font-size: 1rem;
+      }
+      .description-item {
+        font-size: .6rem;
+      }
+      .description2-item {
+        font-size: .6rem;
+      }
+
+    }
+    .value-info-item {
+
+      .price-item {
+        font-size: 2rem;
+      }
+      .including-item {
+        font-size: .6rem;
+        .include-note {
+          color: red;
+        }
+
+      }
+    }
+
+  }
+
+}
+.help-design--container {
+  min-height: 550px;
+  outline: solid 1px #00000026;
+ }
+.help-design {
+  outline: solid 3px  #E78624;
+  text-align: center;
+  font-size: 3rem;
+}
+.title-design {
+  font-weight: bold;
+  font-size: 2rem;
+}
+.descr-design {
+  font-weight: 500;
+  font-size: 1rem;
+  opacity: .6;
+  margin-bottom: 2rem;
+}
+.btn--container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 5rem;
+}
+.finalize--container {
+  display: flex;
+
+  .title-option {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px;
+  }
+  .label-block {
+    padding-left: 10px;
+    font-weight: bold;
+  }
+  .option-block {
+    display: flex;
+    justify-content: flex-start;
+    font-size: .9rem;
+    padding: 15px 10px;
+
+    .first-block {
+      flex-basis: 20%;
+      font-weight: bold;
+    }
+    input {
+      padding: 5px 10px;
+      background: #8080801a;
+    }
+    textarea, select {
+      background: #8080801a;
+    }
+
+  }
+}

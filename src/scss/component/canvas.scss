@@ -1,0 +1,87 @@
+.canvas-containers {
+    position: relative;
+    
+    .canvas-container {
+        // position: absolute !important;
+        top: 0;
+        left: 0;
+    }
+}
+.color-block {
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+}
+.color-group {
+    display: flex;
+    div {
+        margin: 5px
+    }
+}
+
+.color1 { background:  #ABABAB }
+.color2 { background:  #191919 }
+.color3 { background:  #462E00 }
+.color4 { background:  #3E3E3E }
+.color5 { background:  #B3D5CB }
+.color6 { background:  #E2B9A7 }
+.color7 { background:  #CADAD8 }
+.color8 { background:  #DBE2E8 }
+.color9  { background:  #D1C0D4 }
+.color10  { background:  #BFD4B8 }
+.color11  { background:  #DFCABD }
+.color12  { background:  #E5B2A0 }
+.color13  { background:  #007A53 }
+.color14  { background:  #46612B }
+.color15  { background:  #1C2449 }
+.color16  { background:  #EA6101 }
+.color17  { background:  #C0001A }
+.color18  { background:  #FAE3FA }
+.color19  { background:  #1B0390 }
+.color20 { background:  #2B4AF0 }
+
+.canvas-container {
+    position: relative;
+
+    .tools-canvas-container {
+        position: absolute;
+        top: 40px;
+        left: 0;
+
+        .tool {
+            width: 65px;
+            border: solid 3px orange;
+            text-align: center;
+            margin: 1rem 0;
+            padding: 5px;
+            font-size: .625rem;
+            cursor: pointer;
+
+            &:hover {
+                background: #80808033;
+            }
+        }
+    }
+}
+.option-tools {
+    display: flex;
+    position: absolute;
+    bottom: -60px;
+    right: 40%;
+
+    .tool {
+        width: 30px;
+        margin-right: 5px;
+        .img-tool {
+            border: solid 2px orange;
+            text-align: center;
+            padding: 5px;
+            font-size: .625rem;
+            cursor: pointer;
+            
+        }
+        &:hover {
+            background: #80808033;
+        }
+    }
+}

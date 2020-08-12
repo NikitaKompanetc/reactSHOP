@@ -7,16 +7,25 @@
         left: 0;
     }
 }
+#c {
+    margin: 20px 10px;
+    //box-shadow: 0px 0px 1px 1px #00000054;
+}
 .color-block {
     height: 25px;
     width: 25px;
     cursor: pointer;
+    margin: 5px;
 }
 .color-group {
     display: flex;
     div {
         margin: 5px
     }
+}
+.selectedColor {
+    border-radius: 15px;
+    transition: all .3s ease-out;
 }
 
 .color1 { background:  #ABABAB }
@@ -44,9 +53,7 @@
     position: relative;
 
     .tools-canvas-container {
-        position: absolute;
-        top: 40px;
-        left: 0;
+        z-index: 99;
 
         .tool {
             width: 65px;
@@ -58,16 +65,20 @@
             cursor: pointer;
 
             &:hover {
+                border-radius: 17px;
+                transition: all .4s ease-out;
                 background: #80808033;
             }
         }
     }
 }
+.color-select {
+    display: flex;
+}
 .option-tools {
     display: flex;
-    position: absolute;
-    bottom: -60px;
-    right: 40%;
+    justify-content: center;
+    margin-bottom: 1rem;
 
     .tool {
         width: 30px;
@@ -78,10 +89,85 @@
             padding: 5px;
             font-size: .625rem;
             cursor: pointer;
-            
+            &:hover {
+                border-radius: 15px;
+                transition: all .5s ease-out;
+                background: #80808033;
+            }
         }
-        &:hover {
+        
+    }
+}
+label {
+    cursor: pointer;
+    /* Style as you please, it will become the visible UI component. */
+ }
+ 
+ #imgLoader {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+ }
+.canvas--container {
+    display: flex;
+}
+.addition-tools {
+    position: relative;
+    
+    .shapes-list {
+        position: absolute;
+        left: 70px;
+        top: 0;
+        width: 200px;
+        overflow-y: scroll;
+        height: 150px;
+        background: #c4c41e;
+        z-index: 99;
+        cursor: pointer;
+     }
+}
+.navigation-canvas {
+    display: flex;
+    justify-content: space-between;
+
+    .simple-btn {
+        text-decoration: none;
+        border: 0;
+        background: #004B60;
+        padding: .7rem 1.5rem;
+        color: #fff;
+    }
+}
+.finalize--container {
+
+    .canvas-container {
+        height: 400px;
+    }
+    .navigation-canvas, .tools-canvas-container, .canvas-instruments--container > .option-tools {
+        display: none;
+    }
+    .color-select {
+        margin: 30px 0px 15px;
+    }
+    .choose-size {
+        display: flex;
+        .size {
             background: #80808033;
+            padding: 5px;
+            font-size: 10px;
+            margin: 5px;
+            width: 36px;
+            cursor: pointer;
         }
+        .selectedsize {
+            background: #C4C41E;
+        }
+    }
+    
+}
+.container-step2 {
+
+    .color-select, .pick-color {
+        display: none;
     }
 }

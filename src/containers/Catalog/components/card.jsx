@@ -1,21 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardBody, Col } from 'reactstrap';
 import '../../../scss/component/catalogItem.scss'
 import CatalogBtn from "./catalogBtn";
 import { Link } from 'react-router-dom';
 
-const CardCatalog = (props) => (
+
+
+
+function CardCatalog (props) {
+
+  function takeId () {
+    localStorage.clear()
+    localStorage.setItem('idProduct', props.productArr._id)
+  }
+
+  return(
   <Col md={4}>
     <Card>
-    {console.log(9, props)}
       <div className='catalog-wrapper'>
       <CardBody>
         <div className='catalog-item--container'>
           <div className='availability'>
             {!props.productArr.availability === "Not available" ? <div className='avail'>In stock</div> : <div className='not-avail'>Out of stock</div>}
           </div>
-          <div className='image-item'>
-          <Link to="/catalog/product/step/2">
+          <div className='image-item' onClick={takeId}>
+          <Link to={{
+            pathname: "/catalog/product/step/2",
+            }} >
             <img src="https://images-na.ssl-images-amazon.com/images/I/61VcnoQTbTL._SL1188_.jpg" />
           </Link>  
           </div>
@@ -33,12 +44,17 @@ const CardCatalog = (props) => (
               </div>
             </div>
           </div>
-          <Link to="/catalog/product/step/2"><CatalogBtn nameButton={'Choose Product'}></CatalogBtn></Link>
+          <div onClick={takeId} >
+          <Link to={{
+            pathname: "/catalog/product/step/2",
+            }}><CatalogBtn nameButton={'Choose Product'} ></CatalogBtn>
+          </Link>
+          </div>
         </div>
       </CardBody>
       </div>
     </Card>
   </Col>
 );
-
+}
 export default CardCatalog;

@@ -4,13 +4,12 @@ import CardCatalog from './components/card';
 import Steps from "./components/steps";
 import Category from "./components/category";
 
-
 const Catalog = (props) => (
   <Container className="dashboard">
-    {console.log(12, props.productArr )}
+    {console.log(12, props.productArr)}
     <Row>
       <Col md={12}>
-       <Steps isActivebar={1} />
+        <Steps isActivebar={1} />
       </Col>
     </Row>
     <Row>

@@ -638,7 +638,6 @@ class ContainerCatalog extends Component {
     }
 
     productData = () => {
-        console.log(15, 'work')
         Api.get(`https://e3bc9f7ace78.ngrok.io/api/printsterProducts`, { headers: { 'x-auth-token':  `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjFlZjU4ZTI5MGIwNjM1YTRiYmY1NzkiLCJzaG9wTmFtZSI6IlByaW50c3RlclRlc3QiLCJzaG9wRW1haWwiOiJpbmZvQHNvbHZlZXRvLmRrIiwiaXNBZG1pbiI6dHJ1ZSwiYWNjZXNzVG9rZW4iOiJzaHBhdF82NDUwOTMzYTI4MmRmYzlmNTNhMWQ2NTYxOTYyNzAyMiIsInNob3BVcmwiOiJwcmludHN0ZXJ0ZXN0Lm15c2hvcGlmeS5jb20iLCJpYXQiOjE1OTU4NjUxNDN9.KbP1-46OB4Flq4o9fNLP6ncBXnlP1AXBaamiOLjMAqw` } })
         .then(( data ) => {
             this.setState({
@@ -650,11 +649,13 @@ class ContainerCatalog extends Component {
 
             });
         }
-    
+
+
+
     render() {
        
         return (
-          <Catalog productArr={this.state.productArr} />        
+          <Catalog productArr={this.state.productArr}  />        
           )
       }
     

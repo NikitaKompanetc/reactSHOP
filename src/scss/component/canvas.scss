@@ -157,17 +157,33 @@ label {
             font-size: 10px;
             margin: 5px;
             width: 36px;
+            height: 26px;
             cursor: pointer;
+            border: 0;
         }
         .selectedsize {
             background: #C4C41E;
         }
     }
+    .addeds-btn {
+        margin: 0 10px;
+    
+    .simple-btn {
+        text-decoration: none;
+        border: 0;
+        background: #004B60;
+        padding: .7rem 1.5rem;
+        color: #fff;
+        &:disabled {
+            background: #979797;
+            }
+        }
+    }   
     
 }
 .container-step2 {
 
-    .color-select, .pick-color {
+    .color-select, .pick-color, .choose-size {
         display: none;
     }
 }

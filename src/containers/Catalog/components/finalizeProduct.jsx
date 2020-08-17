@@ -6,6 +6,7 @@ import '../../../scss/component/catalogItem.scss';
 import '../../../scss/component/canvas.scss';
 import CatalogBtn from "./catalogBtn";
 import CanvasPreview from './canvas';
+import axios from "axios";
 
 
 class FinalizeProduct extends PureComponent {
@@ -111,21 +112,41 @@ class FinalizeProduct extends PureComponent {
   }  
   createProduct = () => {
     let idProduct = localStorage.getItem('idProduct');
-    let compliteImage = localStorage.getItem('compliteCanvas');
+    let compliteImage = localStorage.getItem('compliteImage');
+    let allVariants = localStorage.getItem('allVariants');
+    let colorProduct = localStorage.getItem('imageColor');
+    let variants = JSON.parse(allVariants)
+    console.log(116, variants)
+    console.log(120, colorProduct)
     let colorsArr = [];
-    colorsArr = this.getURLParam('color[]', window.location.href);
+    let sizesArr = [];
+    variants.forEach(element => {
+      if(colorsArr.includes(element.option1) === false) {
+        colorsArr.push(element.option1)
+      }else return
+      
+    });
+    variants.forEach(element => {
+      if(sizesArr.includes(element.option2) === false) {
+        sizesArr.push(element.option2)
+      }else return
+    });
+    
+    console.log(127, colorsArr)
+    console.log(128, sizesArr)
     console.log(91, compliteImage)
     let sendArray = {
-      "testP": idProduct,
-      "shopifyProductId": "",
-      
-      "shopifyProduct": {
-          "title": "V Product - new collection",
+      // "testP": idProduct,
+      // "shopifyProductId": "",
+
+          "title": "Tested name",
           "images": [
-              "https://cdn.shoplo.com/9107/products/th2048/abam/3740-1106-1346-14.png",
-              compliteImage
+            colorProduct,
+              //"https://cdn.shoplo.com/9107/products/th2048/abam/3740-1106-1346-14.png",
+               //compliteImage
           ],
-          "image": "https://cdn.shoplo.com/9107/products/th2048/abam/3740-1106-1346-14.png",
+          "image": //"https://cdn.shoplo.com/9107/products/th2048/abam/3740-1106-1346-14.png"
+            colorProduct,
           "body_html": "This is a description for the body html",
           "vendor": "9urton vendor",
           "product_type": "New Product Type",
@@ -134,35 +155,7 @@ class FinalizeProduct extends PureComponent {
               "tag2"
           ],
   
-           "variants":[
-            {
-              "cost":10.80,
-              "price":18.80,
-              "sku":"",
-              "option1":"Blue",
-              "option2":"Large",
-              "inventory_quantity":20,
-              "inventory_management": "Printster"
-            },
-            {
-              "cost":10.80,
-              "price":18.80,
-              "sku":"",
-              "option1":"Black",
-              "option2":"X-large",
-              "inventory_quantity":20,
-              "inventory_management": true
-            },
-            {
-              "cost":10.80,
-              "price":18.80,
-              "sku":"",
-              "option1":"Black",
-              "option2":"XX-large",
-              "inventory_quantity":20,
-              "inventory_management": true
-            }
-          ],
+           "variants":variants,
       "options":[
         {
           "name":"Color",
@@ -170,23 +163,31 @@ class FinalizeProduct extends PureComponent {
         },
         {
           "name":"Size",
-          "values": this.state.sizeSelected
+          "values": sizesArr
         }
       ]
   
-      }
+      
   }
   console.log(153, sendArray)
 
-    Api.post(`https://e3bc9f7ace78.ngrok.io/api/linkedProducts/createAndLink`,  
-    sendArray,
-    { headers: { 'x-auth-token':  `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjFlZjU4ZTI5MGIwNjM1YTRiYmY1NzkiLCJzaG9wTmFtZSI6IlByaW50c3RlclRlc3QiLCJzaG9wRW1haWwiOiJpbmZvQHNvbHZlZXRvLmRrIiwiaXNBZG1pbiI6dHJ1ZSwiYWNjZXNzVG9rZW4iOiJzaHBhdF82NDUwOTMzYTI4MmRmYzlmNTNhMWQ2NTYxOTYyNzAyMiIsInNob3BVcmwiOiJwcmludHN0ZXJ0ZXN0Lm15c2hvcGlmeS5jb20iLCJpYXQiOjE1OTU4NjUxNDN9.KbP1-46OB4Flq4o9fNLP6ncBXnlP1AXBaamiOLjMAqw` } }
-    )
-      .then(( ) => {
-        console.log('send')
-        console.log(sendArray)
-        })
-
+  let requestUrl = "https://afdbea8d0b3b.ngrok.io";
+  // sending the x-auth-token which has the accesstoken of shopify with the request.
+  let config = {
+  headers: {
+  'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjFlZjU4ZTI5MGIwNjM1YTRiYmY1NzkiLCJzaG9wTmFtZSI6IlByaW50c3RlclRlc3QiLCJzaG9wRW1haWwiOiJpbmZvQHNvbHZlZXRvLmRrIiwiaXNBZG1pbiI6dHJ1ZSwiYWNjZXNzVG9rZW4iOiJzaHBhdF82NDUwOTMzYTI4MmRmYzlmNTNhMWQ2NTYxOTYyNzAyMiIsInNob3BVcmwiOiJwcmludHN0ZXJ0ZXN0Lm15c2hvcGlmeS5jb20iLCJpYXQiOjE1OTU4NjUxNDN9.KbP1-46OB4Flq4o9fNLP6ncBXnlP1AXBaamiOLjMAqw',
+  'Content-Type': 'application/json'
+  }
+  }
+  let createMonthlyInvoices
+  createMonthlyInvoices = axios.post(`${requestUrl}/api/linkedProducts/createAndLink`,
+  {testP:idProduct,
+  printsterProductId: idProduct,
+  shopifyProductId: "",
+  shopifyProduct: sendArray },
+  { headers: config.headers })
+       //localStorage.clear();
+     // window.location.href = '/catalog/product/step/1';
   }
 
 
@@ -299,21 +300,8 @@ return(
               <div className="title-design">Product options and variations</div>
               <div className="descr-design">Choose which variations and options you want to offer you customers</div>
               <div className="canvas-container-finalize">
-                <CanvasPreview />
+                <CanvasPreview  />
               </div>
-              {/* <div className='color-select'>
-                {this.state.colorArray.map((item, ind) => { 
-                  return <div className={`color-block color${ind + 1} ${item.isChecked ? 'selectedColor' : '' }`} onClick={() => this.selectColorandSize(item.color, item)}></div>
-                })}
-              </div> */}
-              {/* {this.state.isSelectSize ? <div className='choose-size'>
-                {this.state.sizeArray.map((item, ind) => { 
-                  return <div className={`size ${item.isChecked ? 'selectedsize' : 'unselected' }`} onClick={() => this.selectedSize(item.size)}>{item.size}</div>
-                })}
-                <div>
-                  <CatalogBtn nameButton={'add sizes'}></CatalogBtn>
-                </div>
-              </div> : <div>Pick a color</div>} */}
             </Card>
           </Col>
           <Col md={6}>
@@ -372,6 +360,7 @@ return(
         <div onClick={this.createProduct}>
           <CatalogBtn nameButton={'Create'} />
         </div>
+        {/* <button onClick={this.tested()}>test</button> */}
       </div>
     </Row>
   </Container>

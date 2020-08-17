@@ -9,6 +9,7 @@ import ExamplePageTwo from '../ExampleTwo/index';
 import ContainerCatalog from '../Catalog/ContainerCatalog';
 import DesignProduct from '../Catalog/components/designProduct';
 import FinalizeProduct from '../Catalog/components/finalizeProduct';
+import ECommerce from '../ECommerce';
 
 
 const Pages = () => (
@@ -16,12 +17,13 @@ const Pages = () => (
     <Route path="/pages/one" component={ExamplePageOne} />
     <Route path="/pages/two" component={ExamplePageTwo} />
     <Route path="/pages/catalog" component={CatalogSteps} />
+    <Route path="/pages/dashboard" component={ECommerce} />
   </Switch>
 );
 
 const CatalogSteps = () => (
   <Switch>
-    <Route path="/catalog/product/step/1" component={ContainerCatalog} />
+    <Route path="/catalog/product/step/1" component={ContainerCatalog} /> 
     <Route path="/catalog/product/step/2" component={DesignProduct} />
     <Route path="/catalog/product/step/3" component={FinalizeProduct} />
   </Switch>

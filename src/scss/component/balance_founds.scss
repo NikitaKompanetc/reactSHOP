@@ -1,0 +1,46 @@
+.dashboard-balance {
+
+    .balance__title {
+        color: #5B6F7F;
+        text-transform: uppercase;
+        padding: 0;
+        font-size: .9rem;
+    }
+    .balance__descr {
+        color: #5B6F7F;
+        padding-bottom: 10px ;
+        font-size: .8rem;
+    }
+    .funds-block {
+        display: flex;
+        justify-content: space-between;
+    }
+    .add-funds {
+        background: #80808021;
+        padding: 1rem;
+        font-size: .8rem;
+        .add__input {
+            display: flex;
+
+            .label-amount {
+                padding-right: 10px;
+            }
+            input {
+                border: 0;
+                width: 100%;
+            }
+        }
+        .btn-container {
+            padding: 20px 0;
+            .add__btn {
+                width: 100%;
+                font-size: 1rem;
+                color: #fff;
+                background: #C4C41E;
+                border: 0;
+                height: 2.5em;
+                
+            }
+        }
+    }
+}

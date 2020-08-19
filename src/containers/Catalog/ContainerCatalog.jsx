@@ -34,7 +34,7 @@ class ContainerCatalog extends Component {
                             "price": 9.98
                         }
                     ],
-                    "_id": "5f2313ad6278a819a4da8fff",
+                    "_id": "5f3ba7a659e1b23b18a3c9d2",
                     "name": "A new printster product",
                     "leadTime": 3,
                     "price": 9.98,
@@ -70,7 +70,7 @@ class ContainerCatalog extends Component {
                         }
                     ],
                     "__v": 0,
-                    "id": "5f2313ad6278a819a4da8fff"
+                    "id": "5f3ba7a659e1b23b18a3c9d2"
                 },
                 {
                     "printMethod": [
@@ -633,22 +633,22 @@ class ContainerCatalog extends Component {
     }
 
     componentDidMount() {
-        this.productData();
+        //this.productData();
 
     }
 
-    productData = () => {
-        Api.get(`https://e3bc9f7ace78.ngrok.io/api/printsterProducts`, { headers: { 'x-auth-token':  `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjFlZjU4ZTI5MGIwNjM1YTRiYmY1NzkiLCJzaG9wTmFtZSI6IlByaW50c3RlclRlc3QiLCJzaG9wRW1haWwiOiJpbmZvQHNvbHZlZXRvLmRrIiwiaXNBZG1pbiI6dHJ1ZSwiYWNjZXNzVG9rZW4iOiJzaHBhdF82NDUwOTMzYTI4MmRmYzlmNTNhMWQ2NTYxOTYyNzAyMiIsInNob3BVcmwiOiJwcmludHN0ZXJ0ZXN0Lm15c2hvcGlmeS5jb20iLCJpYXQiOjE1OTU4NjUxNDN9.KbP1-46OB4Flq4o9fNLP6ncBXnlP1AXBaamiOLjMAqw` } })
-        .then(( data ) => {
-            this.setState({
-                productArr: data
-            })
-                console.log(11, data)
-            })
-        .catch((error) => {
+    // productData = () => {
+    //     Api.get(`https://afdbea8d0b3b.ngrok.io/api/printsterProducts`, { headers: { 'x-auth-token':  `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjFlZjU4ZTI5MGIwNjM1YTRiYmY1NzkiLCJzaG9wTmFtZSI6IlByaW50c3RlclRlc3QiLCJzaG9wRW1haWwiOiJpbmZvQHNvbHZlZXRvLmRrIiwiaXNBZG1pbiI6dHJ1ZSwiYWNjZXNzVG9rZW4iOiJzaHBhdF82NDUwOTMzYTI4MmRmYzlmNTNhMWQ2NTYxOTYyNzAyMiIsInNob3BVcmwiOiJwcmludHN0ZXJ0ZXN0Lm15c2hvcGlmeS5jb20iLCJpYXQiOjE1OTU4NjUxNDN9.KbP1-46OB4Flq4o9fNLP6ncBXnlP1AXBaamiOLjMAqw` } })
+    //     .then(( data ) => {
+    //         this.setState({
+    //             productArr: data
+    //         })
+    //             console.log(11, data)
+    //         })
+    //     .catch((error) => {
 
-            });
-        }
+    //         });
+    //     }
 
 
 

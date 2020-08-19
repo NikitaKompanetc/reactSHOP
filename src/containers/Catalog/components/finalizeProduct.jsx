@@ -7,6 +7,7 @@ import '../../../scss/component/canvas.scss';
 import CatalogBtn from "./catalogBtn";
 import CanvasPreview from './canvas';
 import axios from "axios";
+import tShirt from '../../../img/Womens-T-Shirt-Example.png';
 
 
 class FinalizeProduct extends PureComponent {
@@ -143,9 +144,8 @@ class FinalizeProduct extends PureComponent {
           "images": [
             colorProduct,
               //"https://cdn.shoplo.com/9107/products/th2048/abam/3740-1106-1346-14.png",
-               //compliteImage
           ],
-          "image": //"https://cdn.shoplo.com/9107/products/th2048/abam/3740-1106-1346-14.png"
+          "image": //"https://cdn.shoplo.com/9107/products/th2048/abam/3740-1106-1346-14.png",
             colorProduct,
           "body_html": "This is a description for the body html",
           "vendor": "9urton vendor",

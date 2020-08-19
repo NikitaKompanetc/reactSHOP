@@ -52,7 +52,7 @@ class Layout extends Component {
           changeSidebarVisibility={this.changeSidebarVisibility}
         /> */}
         <TopbarWithNavigation
-            changeMobileSidebarVisibility={this.changeMobileSidebarVisibility}
+             changeMobileSidebarVisibility={this.changeMobileSidebarVisibility}
           />
         <Sidebar
           sidebar={sidebar}

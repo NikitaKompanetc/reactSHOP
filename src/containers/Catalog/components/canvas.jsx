@@ -11,16 +11,20 @@ import Text from '../../../img/text.svg';
 import Shapes from '../../../img/shapes.svg';
 import ClipArts from '../../../img/art.svg';
 import Emojis from '../../../img/emojis.svg';
-import Draw from '../../../img/draw.svg';
-import canvasToImage from 'canvas-to-image';
+// import Draw from '../../../img/draw.svg';
+// import canvasToImage from 'canvas-to-image';
 
-import CircleRight from '../../../img/circleRight.svg';
-import CircleLeft from '../../../img/circleLeft.svg';
-import ZoomIn from '../../../img/zoom-in.svg';
-import ZoomOut from '../../../img/zoom-out.svg';
-import CloudDownload from '../../../img/cloud-computing.svg';
-import Print from '../../../img/print.svg';
-import SaveIcon from '../../../img/save.svg';
+// import CircleRight from '../../../img/circleRight.svg';
+// import CircleLeft from '../../../img/circleLeft.svg';
+// import ZoomIn from '../../../img/zoom-in.svg';
+// import ZoomOut from '../../../img/zoom-out.svg';
+// import CloudDownload from '../../../img/cloud-computing.svg';
+// import Print from '../../../img/print.svg';
+// import SaveIcon from '../../../img/save.svg';
+import svg_to_png from 'svg-to-png';
+import convertImage from './step3/convertImages'
+
+
 
 
 class CanvasPreview extends PureComponent {
@@ -235,7 +239,7 @@ class CanvasPreview extends PureComponent {
         image.filters = [];
       }
       image.filters.push(new fabric.Image.filters.BlendColor({
-        id:'color',
+        id: 'color',
         color: color,
         mode: 'overlay',
         alpha: 0.6,
@@ -249,8 +253,8 @@ class CanvasPreview extends PureComponent {
       canvas.requestRenderAll();
       lastColor = color;
 
-      canvas.getObjects().forEach( element => {
-        if(element.cacheKey == 'texture0'){
+      canvas.getObjects().forEach(element => {
+        if (element.cacheKey == 'texture0') {
           canvas.setActiveObject(element)
           var activeObj = canvas.getActiveObject();
           activeObj && canvas.bringToFront(activeObj).discardActiveObject(activeObj).renderAll();
@@ -642,6 +646,11 @@ class CanvasPreview extends PureComponent {
     this.state.multiSizeArr = [];
     this.state.multiVariant = [];
   }
+  convertImage() {
+    //let colorProduct = localStorage.getItem('imageColor');
+    convertImage();
+   
+  }
 
   render() {
     const shape1 = 'https://avatanplus.com/files/resources/original/57cbfb032a6d3156f4cc8466.png';
@@ -664,9 +673,6 @@ class CanvasPreview extends PureComponent {
         <div className="navigation-canvas">
           <button className='simple-btn' onClick={this.clearStorage} >Clear</button>
           <button className='simple-btn' onClick={() => this.addColors(this.canvasik, this.state.currentColor)}>Next step</button>
-          <button onClick={() => this.getIndex(this.canvasik)}>Index</button>
-          <button onClick={() => this.bringToFront(this.canvasik)} >bringToFront</button>
-          <button onClick={() => this.bringToBack(this.canvasik)} >bringToBack</button>
         </div>
         <div className='canvas--container'>
           <div className="tools-canvas-container">
@@ -782,6 +788,7 @@ class CanvasPreview extends PureComponent {
               })}
             </div>
             <button id="tested">test</button>
+            <button onClick={() => this.convertImage()}>convert image</button>
             <button onClick={() => this.bringToBack(this.canvasik)} >bringToBack</button>
             <button onClick={() => this.bringToFront(this.canvasik)} >bringToFront</button>
           </div>

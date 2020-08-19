@@ -12,6 +12,8 @@ import { deleteNewOrderTableData } from "../../redux/actions/newOrderTableAction
 import { NewOrderTableProps } from "../helpers/prop-types/TablesProps";
 import { RTLProps } from "../helpers/prop-types/ReducerProps";
 import axios from "axios";
+import BalanceFounds from "./components/BalanceFounds";
+import ManageProducts from "./components/ManageProducts";
 
 class ECommerceDashboard extends PureComponent {
   // static propTypes = {
@@ -61,7 +63,13 @@ class ECommerceDashboard extends PureComponent {
           <SalesStatistic />
           <SalesStatistisBar />
           <SalesReport />
-          <RecentOrders ordersData={this.state.ordersData}/>
+          {/* <RecentOrders ordersData={this.state.ordersData}/> */}
+        </Row>
+        <Row>
+          <BalanceFounds />
+        </Row>
+        <Row>
+          <ManageProducts />
         </Row>
       </Container>
     );

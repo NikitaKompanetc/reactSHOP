@@ -10,14 +10,16 @@ import ContainerCatalog from '../Catalog/ContainerCatalog';
 import DesignProduct from '../Catalog/components/designProduct';
 import FinalizeProduct from '../Catalog/components/finalizeProduct';
 import ECommerce from '../ECommerce';
+import Orders from '../Orders';
 
 
 const Pages = () => (
   <Switch>
     <Route path="/pages/one" component={ExamplePageOne} />
     <Route path="/pages/two" component={ExamplePageTwo} />
-    <Route path="/pages/catalog" component={CatalogSteps} />
-    <Route path="/pages/dashboard" component={ECommerce} />
+    <Route path="/catalog" component={CatalogSteps} />
+    <Route path="/dashboard" component={ECommerce} />
+    <Route path="/orders" component={Orders} />
   </Switch>
 );
 
@@ -35,6 +37,8 @@ const wrappedRoutes = () => (
     <div className="container__wrap">
       <Route path="/pages" component={Pages} />
       <Route path="/catalog" component={CatalogSteps} />
+      <Route path="/dashboard" component={ECommerce} />
+      <Route path="/orders" component={Orders} />
     </div>
   </div>
 );

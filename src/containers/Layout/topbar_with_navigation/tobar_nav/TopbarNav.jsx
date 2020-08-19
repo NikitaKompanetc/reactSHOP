@@ -9,14 +9,14 @@ const TopbarNav = () => (
   //   <Link className="topbar__nav-link" to="/dashboard_e_commerce">Dashboard</Link>
   // </nav>
   <div className="topbar__nav tabs tabs--bordered-top">
-    <div className="tabs__wrap">
+    <div className="tabs__wrap ">
       <Nav tabs>
         <NavItem>
           <NavLink
             className="nav-link"
             activeClassName="active"
             exact
-            to="/admin"
+            to="/dashboard"
           >
             Admin
           </NavLink>
@@ -29,6 +29,16 @@ const TopbarNav = () => (
             to="/billing"
           >
             Billing
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            className="nav-link"
+            activeClassName="active"
+            exact
+            to="/catalog/product/step/1"
+          >
+            Catalog
           </NavLink>
         </NavItem>
         <NavItem>

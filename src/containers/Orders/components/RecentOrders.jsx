@@ -2,7 +2,7 @@ import React from "react";
 import { Badge, Table } from "reactstrap";
 import { withTranslation } from "react-i18next";
 import PropTypes from "prop-types";
-import Panel from "../../../../shared/components/Panel";
+import Panel from "../../../shared/components/Panel";
 import { useState, useEffect } from "react";
 import RecentOrdersCollapse from "./RecentOrdersCollapse";
 
@@ -65,41 +65,42 @@ const RecentOrders = ({ t, ...props }) => {
             <th>Date</th>
             <th>Location</th>
             <th>Status</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {orders && orders.length
             ? orders.map((product, i) => (
-                <>
-                  <tr>
-                    <td>{i + 1}</td>
-                    <td>{product._id}</td>
-                    <td
-                      onClick={() =>
-                        handleCollapse("customerId", "products", product._id)
-                      }
-                    >{`${product.customerId.name} ${product.customerId.lastname}`}</td>
-                    <td
-                      onClick={() =>
-                        handleCollapse("products", "customerId", product._id)
-                      }
-                    >
-                      {product.products.model}
-                    </td>
-                    <td>1</td>
-                    <td>{getDate(product.products.importDate)}</td>
-                    <td>{product.customerId.city}</td>
-                    <td>
-                      <Badge color="success">In Progress</Badge>
-                    </td>
-                  </tr>
-                  <RecentOrdersCollapse
-                    data={product}
-                    title={title}
-                    id={product._id}
-                  />
-                </>
-              ))
+              <>
+                <tr>
+                  <td>{i + 1}</td>
+                  <td>{product._id}</td>
+                  <td
+                    onClick={() =>
+                      handleCollapse("customerId", "products", product._id)
+                    }
+                  >{`${product.customerId.name} ${product.customerId.lastname}`}</td>
+                  <td
+                    onClick={() =>
+                      handleCollapse("products", "customerId", product._id)
+                    }
+                  >
+                    {product.products.model}
+                  </td>
+                  <td>1</td>
+                  <td>{getDate(product.products.importDate)}</td>
+                  <td>{product.customerId.city}</td>
+                  <td>
+                    <Badge color="success">In Progress</Badge>
+                  </td>
+                </tr>
+                <RecentOrdersCollapse
+                  data={product}
+                  title={title}
+                  id={product._id}
+                />
+              </>
+            ))
             : null}
         </tbody>
       </Table>

@@ -8,6 +8,10 @@
 
   .tabs__wrap {
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+
     @include directify($directions) {
       text-align: directed("left");
     }
@@ -16,9 +20,12 @@
   }
 
   .nav-tabs {
+    align-items: center;
+
     li {
       .nav-link {
         padding: 3px 20px 3px 10px;
+        font-size: 1rem;
         @include directify($directions) {
           #{directed('margin-right')}: 0px;
         }
@@ -26,7 +33,7 @@
         cursor: pointer;
 
         @include themify($themes) {
-          color: #ffffff;
+          color: #C4C41E;
         }
 
         &:hover,
@@ -50,7 +57,7 @@
         @include themify($themes) {
           border-color: #dddddd;
           border-bottom-color: $color-rust-orange;
-          color: #ffffff;
+          color: #C4C41E;
         }
       }
 
@@ -214,6 +221,16 @@
           }
         }
       }
+    }
+  }
+  .notifications {
+    display: flex;
+    justify-content: space-between;
+    width: 15%;
+    align-items: center;
+
+    .notify__div {
+      display: flex;
     }
   }
 }

@@ -16,6 +16,7 @@ const RecentOrders = ({ t, ...props }) => {
   const [orders, setOrdersData] = useState([]);
   const [check, toggleCheck] = useState(true);
   const [title, setTitle] = useState("");
+  //const [openDetails, setOpenDetails] = useState(fasle);
 
   const handleCollapse = (title1, title2, id) => {
     const newOrders = [];
@@ -75,16 +76,8 @@ const RecentOrders = ({ t, ...props }) => {
                 <tr>
                   <td>{i + 1}</td>
                   <td>{product._id}</td>
-                  <td
-                    onClick={() =>
-                      handleCollapse("customerId", "products", product._id)
-                    }
-                  >{`${product.customerId.name} ${product.customerId.lastname}`}</td>
-                  <td
-                    onClick={() =>
-                      handleCollapse("products", "customerId", product._id)
-                    }
-                  >
+                  <td>{`${product.customerId.name} ${product.customerId.lastname}`}</td>
+                  <td>
                     {product.products.model}
                   </td>
                   <td>1</td>
@@ -92,6 +85,14 @@ const RecentOrders = ({ t, ...props }) => {
                   <td>{product.customerId.city}</td>
                   <td>
                     <Badge color="success">In Progress</Badge>
+                  </td>
+                  <td>
+                    <button
+                      onClick={() =>
+                        handleCollapse("customerId", "products", product._id)
+                      }
+                      className='details-btn'
+                    >Details</button>
                   </td>
                 </tr>
                 <RecentOrdersCollapse

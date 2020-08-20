@@ -4,10 +4,10 @@
   top: 0;
   height: 60px;
   z-index: 101;
-  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 15px 0 rgba(255, 0, 0, 0.05);
 
   @include themify($themes) {
-    background: themed('colorBackground');
+    background: themed("colorBackground");
   }
 }
 
@@ -15,6 +15,8 @@
   position: relative;
   display: flex;
   height: 60px;
+  background-color: $color-rust-orange;
+  justify-content: flex-end;
 }
 
 .topbar__button {
@@ -31,9 +33,8 @@
   }
 
   &:hover {
-
     @include themify($themes) {
-      background: themed('colorHover');
+      background: themed("colorHover");
     }
   }
 
@@ -49,8 +50,8 @@
 }
 
 .topbar__logo {
-  width: 150px;
-  height: 32px;
+  width: 120px;
+  height: 60px;
   margin: auto 0;
   background-repeat: no-repeat;
   background-position-y: center;
@@ -59,7 +60,8 @@
   display: none;
 
   @include themify($themes) {
-    background-image: themed('logoImg');
+    background-image: themed("logoImg");
+    background-size: cover;
   }
 
   @media screen and (min-width: 768px) {
@@ -69,19 +71,26 @@
 
 .topbar__right {
   position: absolute;
-  right: 0;
+
+  @include directify($directions) {
+    #{directed('right')}: 0px;
+    #{directed('margin-right')}: 15px;
+  }
+
   display: flex;
   height: 100%;
-  margin-right: 15px;
 }
 
 .topbar__left {
-  //position: absolute;
-  position: relative;
-  left: 0;
+  position: absolute;
+
+  @include directify($directions) {
+    #{directed('left')}: 0px;
+  }
+
   display: flex;
   height: 100%;
-  width: 50%;
+  width: 120px;
 }
 
 .topbar__avatar {
@@ -96,9 +105,12 @@
   padding: 0 15px;
   background-color: transparent;
 
-  &:hover, &:focus, &:active, &:focus:active {
+  &:hover,
+  &:focus,
+  &:active,
+  &:focus:active {
     @include themify($themes) {
-      background-color: themed('colorHover');
+      background-color: themed("colorHover");
     }
   }
 
@@ -111,7 +123,9 @@
   }
 }
 
-.topbar__avatar-img, .topbar__avatar-name, .topbar__icon {
+.topbar__avatar-img,
+.topbar__avatar-name,
+.topbar__icon {
   margin: auto 0;
 }
 
@@ -126,15 +140,21 @@
   line-height: 18px;
   font-weight: 400;
   display: none;
-  margin-left: 10px;
+
+  @include directify($directions) {
+    #{directed('margin-left')}: 10px;
+  }
 
   @include themify($themes) {
-    color: themed('colorText');
+    color: themed("colorText");
   }
 }
 
 .topbar__icon {
-  margin-left: 8px;
+  @include directify($directions) {
+    #{directed('margin-left')}: 8px;
+  }
+
   height: 18px;
   margin-top: auto;
   fill: #b1c3c8;
@@ -149,7 +169,7 @@
   margin-top: 0;
 
   @include themify($themes) {
-    background: themed('colorBackground');
+    background: themed("colorBackground");
   }
 
   button {
@@ -157,7 +177,7 @@
 
     &:hover {
       @include themify($themes) {
-        background-color: themed('colorHover');
+        background-color: themed("colorHover");
       }
     }
   }
@@ -171,9 +191,11 @@
   z-index: 101;
   position: absolute;
   width: 100%;
-  padding: 0 10px;
-  min-width: 220px;
-  right: 0;
+  min-width: 210px;
+
+  @include directify($directions) {
+    #{directed('right')}: 0px;
+  }
 }
 
 .topbar__link {
@@ -186,13 +208,17 @@
   cursor: pointer;
 
   @include themify($themes) {
-    color: themed('colorText');
+    color: themed("colorText");
   }
 
   &:before {
     content: "";
     position: absolute;
-    left: 0;
+
+    @include directify($directions) {
+      #{directed('left')}: 0px;
+    }
+
     top: 0;
     height: 100%;
     width: 2px;
@@ -203,7 +229,7 @@
 
   &:hover {
     @include themify($themes) {
-      background-color: themed('colorHover');
+      background-color: themed("colorHover");
     }
 
     &:before {
@@ -219,12 +245,15 @@
 }
 
 .topbar__link-icon {
-  margin-right: 10px;
+  @include directify($directions) {
+    #{directed('margin-right')}: 10px;
+  }
+
   font-size: 13px;
   line-height: 13px;
 
   @include themify($themes) {
-    color: themed('colorIcon');
+    color: themed("colorIcon");
   }
 }
 
@@ -232,25 +261,35 @@
   margin: 15px 0;
 
   @include themify($themes) {
-    border-top: 1px solid themed('colorBorder');
+    border-top: 1px solid themed("colorBorder");
   }
 }
 
 .topbar__profile {
   margin-bottom: 0;
-  margin-left: 20px;
+
+  @include directify($directions) {
+    #{directed('margin-left')}: 20px;
+  }
+
+  @media screen and (max-width: 640px) {
+    @include directify($directions) {
+      #{directed('margin-left')}: 0px;
+    }
+  }
+
   position: relative;
 }
 
 .topbar__collapse {
   position: relative;
-  display: none;
+  display: block;
 
   &.topbar__collapse--language {
     min-width: 70px;
     display: block;
 
-    & > button {
+    &>button {
       padding: 0 4px;
       width: 100%;
     }
@@ -264,24 +303,32 @@
 .topbar__collapse-content {
   width: 270px;
   position: absolute;
-  right: 0;
+
+  @include directify($directions) {
+    #{directed('right')}: 0px;
+  }
+
   bottom: 20px;
   transform: translateY(100%);
   box-shadow: 0 10px 25px 0 rgba(33, 36, 50, 0.13);
   z-index: 101;
 
   @include themify($themes) {
-    background: themed('colorBackground');
+    background: themed("colorBackground");
   }
 
   &.topbar__collapse-content--language {
-    max-width: 70px;
+    max-width: 75px;
     padding: 10px 0;
+    bottom: 0;
     width: 100%;
   }
 
   @media screen and (max-width: 768px) {
-    left: 50%;
+    @include directify($directions) {
+      #{directed('left')}: 50%;
+    }
+
     transform: translate(-50%, 100%);
   }
 
@@ -296,7 +343,11 @@
   border: none;
   background: transparent;
   cursor: pointer;
-  text-align: left;
+
+  @include directify($directions) {
+    text-align: directed("left");
+  }
+
   font-size: 13px;
   line-height: 16px;
   transition: 0.3s;
@@ -313,17 +364,22 @@
   margin: auto 0;
 
   @include themify($themes) {
-    color: themed('colorText');
+    color: themed("colorText");
   }
 
   &:not(:last-child) {
-    margin-right: 5px;
+    @include directify($directions) {
+      #{directed('margin-right')}: 5px;
+    }
   }
 
   img {
     height: 11px;
     width: 16px;
-    margin-right: 4px;
+
+    @include directify($directions) {
+      #{directed('margin-right')}: 4px;
+    }
   }
 }
 
@@ -347,12 +403,19 @@
   align-items: center;
 
   @include themify($themes) {
-    border-bottom: 1px solid themed('colorBorder');
+    border-bottom: 1px solid themed("colorBorder");
   }
 }
 
 .topbar__collapse-item {
-  padding: 12px 55px 12px 70px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+
+  @include directify($directions) {
+    #{directed('padding-left')}: 70px;
+    #{directed('padding-right')}: 55px;
+  }
+
   display: flex;
   position: relative;
   height: 62px;
@@ -360,7 +423,7 @@
   flex-wrap: wrap;
 
   @include themify($themes) {
-    border-bottom: 1px solid themed('colorBorder');
+    border-bottom: 1px solid themed("colorBorder");
   }
 }
 
@@ -370,7 +433,10 @@
   border-radius: 50%;
   overflow: hidden;
   position: absolute;
-  left: 15px;
+
+  @include directify($directions) {
+    #{directed('left')}: 15px;
+  }
 }
 
 .topbar__collapse-message {
@@ -378,6 +444,10 @@
   font-size: 12px;
   line-height: 16px;
   color: $color-gray;
+
+  @include directify($directions) {
+    text-align: directed("left");
+  }
 
   &.topbar__collapse-message--mail {
     text-overflow: ellipsis;
@@ -396,7 +466,11 @@
 .topbar__collapse-date {
   position: absolute;
   top: 12px;
-  right: 15px;
+
+  @include directify($directions) {
+    #{directed('right')}: 15px;
+  }
+
   font-size: 10px;
   color: $color-gray;
   margin-top: 2px;
@@ -427,7 +501,11 @@
   color: #c5d2d6;
   border: none;
   padding: 0;
-  text-align: right;
+
+  @include directify($directions) {
+    text-align: directed("right");
+  }
+
   font-size: 12px;
   line-height: 16px;
   transition: 0.3s;
@@ -450,13 +528,12 @@
   transition: all 0.3s;
 
   @include themify($themes) {
-    color: themed('colorText');
+    color: themed("colorText");
   }
 
   &:hover {
-
     @include themify($themes) {
-      background-color: themed('colorHover');
+      background-color: themed("colorHover");
     }
   }
 
@@ -467,14 +544,21 @@
     fill: #b1c3c8;
   }
 
-  &.topbar__btn--new {
+  @media screen and (max-width: 640px) {
+    padding: 0 5px;
+  }
 
+  &.topbar__btn--new {
     .topbar__btn-new-label {
       position: absolute;
-      right: 9px;
+
+      @include directify($directions) {
+        #{directed('right')}: 9px;
+      }
+
       top: 20px;
 
-      & > div {
+      &>div {
         position: relative;
 
         &:before {
@@ -482,10 +566,17 @@
           content: "";
           position: absolute;
           top: 50%;
-          left: 50%;
+
+          @include directify($directions) {
+            #{directed('left')}: 50%;
+          }
+
           border-radius: 50%;
-          transform: translate(-50%, -50%);
           animation: beforePulse 1.5s infinite;
+
+          @include directify($directions) {
+            transform: #{directed("translate")};
+          }
         }
 
         &:after {
@@ -495,9 +586,16 @@
           content: "";
           position: absolute;
           top: 50%;
-          left: 50%;
+
+          @include directify($directions) {
+            #{directed('left')}: 50%;
+          }
+
           border-radius: 50%;
-          transform: translate(-50%, -50%);
+
+          @include directify($directions) {
+            transform: #{directed("translate")};
+          }
         }
       }
     }
@@ -508,10 +606,12 @@
       width: 7px;
       height: 7px;
     }
+
     25% {
       width: 13px;
       height: 13px;
     }
+
     to {
       width: 7px;
       height: 7px;
@@ -520,11 +620,56 @@
 }
 
 .topbar__nav {
-  width: 100%;
+  width: calc(100% - 120px);
   display: none;
   height: 100%;
   justify-content: center;
   align-items: center;
+
+  .tabs__wrap {
+    position: absolute;
+    width: calc(100% - 120px);
+
+    .notifications {
+      width: 120px;
+      position: absolute;
+      top: -16px;
+      right: 0px;
+
+      .balance__div {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #dee2e6;
+        padding-right: 10px;
+
+        span {
+          color: #fff;
+        }
+      }
+
+      .notify__div {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 4px;
+        padding-right: 6px;
+
+        .topbar__collapse {
+          .topbar__btn {
+            padding: 0 6px;
+          }
+
+          .topbar__btn-new-label {
+            top: 0;
+            right: 6px;
+          }
+        }
+      }
+    }
+  }
+
+  // @include directify($directions) {
+  //   #{directed('margin-right')}: 140px;
+  // }
 }
 
 .topbar .topbar__nav-dropdown-toggle {
@@ -539,26 +684,35 @@
   margin: 0;
 
   @include themify($themes) {
-    color: themed('colorText');
+    color: themed("colorText");
   }
 
   &:before {
     display: none;
   }
 
-  &:hover, &:focus, &:active, &:focus:active {
-
+  &:hover,
+  &:focus,
+  &:active,
+  &:focus:active {
     @include themify($themes) {
-      background-color: themed('colorHover');
+      background-color: themed("colorHover");
     }
   }
 
   svg {
     fill: $color-additional;
-    margin-left: 3px;
+
+    @include directify($directions) {
+      #{directed('margin-left')}: 3px;
+    }
+
     height: 16px;
     width: 16px;
-    margin-right: 0;
+
+    @include directify($directions) {
+      #{directed('margin-right')}: 0px;
+    }
   }
 }
 
@@ -578,7 +732,11 @@
   font-size: 8px;
   font-weight: 400;
   padding: 2px;
-  margin-left: 5px;
+
+  @include directify($directions) {
+    #{directed('margin-left')}: 5px;
+  }
+
   line-height: 9px;
   position: relative;
   text-transform: uppercase;
@@ -586,7 +744,11 @@
 
   span {
     position: absolute;
-    left: 0;
+
+    @include directify($directions) {
+      #{directed('left')}: 0px;
+    }
+
     top: 3px;
     width: 26px;
     text-align: center;
@@ -601,15 +763,15 @@
   padding: 10px 25px;
   transition: 0.3s;
   font-size: 14px;
-
-  @include themify($themes) {
-    color: themed('colorText');
-  }
+  font-family: "Open Sans";
+  color: #fff;
+  // @include themify($themes) {
+  //   color: themed('colorText');
+  // }
 
   &:hover {
-
     @include themify($themes) {
-      background-color: themed('colorHover');
+      background-color: themed("colorHover");
     }
   }
 }
@@ -618,7 +780,6 @@
   position: relative;
 
   &:hover {
-
     .topbar__submenu {
       opacity: 1;
       width: auto;
@@ -629,18 +790,38 @@
 
 .topbar__category-icon {
   position: absolute;
-  right: 20px;
+
+  @include directify($directions) {
+    #{directed('right')}: 20px;
+  }
+
   font-size: 10px;
   line-height: 14px;
 
   @include themify($themes) {
-    color: themed('colorIcon');
+    color: themed("colorIcon");
+  }
+}
+
+.rtl-support {
+  .topbar__submenu {
+    transform: none;
+    right: 100%;
+  }
+
+  .topbar__category-icon {
+    transform: rotate(180deg);
+  }
+}
+
+.ltr-support {
+  .topbar__submenu {
+    right: 1px;
   }
 }
 
 .topbar__submenu {
   position: absolute;
-  right: 1px;
   top: 0;
   transform: translateX(100%);
   transition: 0.3s;
@@ -650,22 +831,20 @@
   overflow: hidden;
 
   @include themify($themes) {
-    background-color: themed('colorHover');
+    background-color: themed("colorHover");
   }
 
   .topbar__link {
-
     &:hover {
-
       @include themify($themes) {
-        background-color: themed('colorBackground');
+        background-color: themed("colorBackground");
       }
     }
   }
 }
 
 .topbar__search {
-  display: none;
+  display: flex;
   margin: auto 0;
   padding: 0;
   position: relative;
@@ -675,24 +854,42 @@
   width: 0;
   transition: all 0.3s;
   opacity: 0;
-  margin: auto auto auto 0;
+
+  @include directify($directions) {
+    #{directed('margin-right')}: auto;
+    #{directed('margin-left')}: 0px;
+  }
+
+  margin-top: auto;
+  margin-bottom: auto;
   border: none;
   border-radius: 13px;
   height: 26px;
-  padding-left: 10px;
-  padding-right: 46px;
+
+  @include directify($directions) {
+    #{directed('padding-left')}: 10px;
+    #{directed('padding-right')}: 46px;
+  }
 
   @include themify($themes) {
-    background-color: themed('colorBackgroundBody');
+    background-color: themed("colorBackgroundBody");
   }
 
   &.topbar__search-field--open {
-    width: 200px;
+    width: 100%;
+    max-width: 200px;
+    min-width: 50px;
     opacity: 1;
-    margin-left: 10px;
+    z-index: 102;
 
-    & + button {
-      right: 10px;
+    @include directify($directions) {
+      #{directed('margin-left')}: 10px;
+    }
+
+    &+button {
+      @include directify($directions) {
+        #{directed('right')}: 10px;
+      }
     }
   }
 
@@ -701,7 +898,28 @@
   }
 }
 
+.layout--top-navigation {
+  .topbar__search-field {
+    &::placeholder {
+      color: rgb(202, 193, 193);
+    }
+
+    &.topbar__search-field--open {
+      width: 55vw;
+
+      @media screen and (max-width: 1200px) {
+        width: 59vw;
+      }
+
+      @media screen and (max-width: 1049px) {
+        width: 20vw;
+      }
+    }
+  }
+}
+
 .topbar__search-btn {
+  z-index: 1001;
   height: 26px;
   width: 26px;
   border-radius: 13px;
@@ -709,32 +927,34 @@
   padding: 0;
   background: transparent;
   position: absolute;
-  right: 0;
+
+  @include directify($directions) {
+    #{directed('right')}: 0px;
+  }
 
   &:hover {
-
     @include themify($themes) {
-      background-color: themed('colorBackgroundBody');
+      background-color: themed("colorBackgroundBody");
     }
   }
 }
 
 @media screen and (min-width: 480px) {
-
   .topbar__avatar-name {
     display: block;
   }
 
   .topbar__menu {
     width: 100%;
-    left: 0 !important;
+
+    @include directify($directions) {
+      #{directed('left')}: 0px !important;
+    }
   }
 }
 
 @media screen and (min-width: 576px) {
-
   .topbar__button {
-
     &.topbar__button--desktop {
       display: block;
     }
@@ -745,7 +965,6 @@
   }
 
   .topbar.topbar--navigation {
-
     .topbar__button.topbar__button--mobile {
       display: block;
     }
@@ -753,22 +972,22 @@
 }
 
 @media screen and (min-width: 768px) {
-
   .topbar__search {
     display: flex;
   }
 }
 
-@media screen and (min-width: 992px) {
-
+@media screen and (min-width: 768px) {
   .topbar__nav {
     display: flex;
   }
 
   .topbar.topbar--navigation {
-
     .topbar__logo {
-      margin-left: 15px;
+      @include directify($directions) {
+        #{directed('margin-left')}: 15px;
+      }
+
       display: block;
     }
 
@@ -781,15 +1000,15 @@
     }
 
     .topbar__profile {
-      margin-left: 0;
+      @include directify($directions) {
+        #{directed('margin-left')}: 0px;
+      }
     }
   }
 }
 
 @media screen and (min-width: 1200px) {
-
   .topbar.topbar--navigation {
-
     .topbar__avatar-name {
       display: block;
     }
@@ -798,7 +1017,8 @@
 
 @media screen and (min-width: 1580px) {
 
-  .topbar__nav-dropdown-toggle, .topbar__nav-link {
+  .topbar__nav-dropdown-toggle,
+  .topbar__nav-link {
     width: 240px;
   }
 }

@@ -4,6 +4,7 @@ import { withTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import RecentOrders from "./components/RecentOrders";
+import '../../scss/component/orders.scss'
 // import { deleteNewOrderTableData } from "../../../redux/actions/newOrderTableActions";
 // import { NewOrderTableProps } from "../../../shared/prop-types/TablesProps";
 // import { RTLProps } from "../../../shared/prop-types/ReducerProps";

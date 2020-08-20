@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import Topbar from './topbar/Topbar';
 import Sidebar from './sidebar/Sidebar';
 import TopbarWithNavigation from './topbar_with_navigation/TopbarWithNavigation';
+import SidebarMobile from './topbar_with_navigation/sidebar_mobile/SidebarMobile';
 
 import { changeThemeToDark, changeThemeToLight } from '../../redux/actions/themeActions';
 import { changeMobileSidebarVisibility, changeSidebarVisibility } from '../../redux/actions/sidebarActions';
@@ -52,9 +53,15 @@ class Layout extends Component {
           changeSidebarVisibility={this.changeSidebarVisibility}
         /> */}
         <TopbarWithNavigation
-             changeMobileSidebarVisibility={this.changeMobileSidebarVisibility}
-          />
-        <Sidebar
+          changeMobileSidebarVisibility={this.changeMobileSidebarVisibility}
+        />
+        {/* <Sidebar
+          sidebar={sidebar}
+          changeToDark={this.changeToDark}
+          changeToLight={this.changeToLight}
+          changeMobileSidebarVisibility={this.changeMobileSidebarVisibility}
+        /> */}
+        <SidebarMobile
           sidebar={sidebar}
           changeToDark={this.changeToDark}
           changeToLight={this.changeToLight}

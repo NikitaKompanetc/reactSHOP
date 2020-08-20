@@ -28,6 +28,7 @@
     "react-scripts": "^3.4.1",
     "react-smooth-scrollbar": "^8.0.6",
     "react-step-progress": "^1.0.2",
+    "react-text-mask": "^5.4.3",
     "react-vis": "^1.11.7",
     "reactstrap": "^8.5.1",
     "recharts": "^1.8.5",

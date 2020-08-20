@@ -18,7 +18,7 @@ export default class RecentOrdersCollapse extends Component {
               }
               } isOpen={data.customerId["toggleVal" + id]}>
                 <Table responsive className="table--bordered">
-                  <thead>
+                  {/* <thead>
                     <tr>
                       <th>Customer Id</th>
                       <th>Name</th>
@@ -35,7 +35,102 @@ export default class RecentOrdersCollapse extends Component {
                       <td>{data.customerId.phone}</td>
                       <td>{data.customerId.city}</td>
                     </tr>
-                  </tbody>
+                  </tbody> */}
+                  <div className="billing-stats">
+                    <div>
+                      <div className="stats__head">Billing address</div>
+                      <div>
+                        <div>Maria Robertson</div>
+                        <div>99 Shriley Ave.</div>
+                        <div>London</div>
+                        <div>EJHM99</div>
+                        <div>+44 899388829</div>
+                        <div>E-mail: Mroberts@pt.com</div>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="stats__head">Shipping address:</div>
+                      <div>
+                        <div>Maria Robertson</div>
+                        <div>99 Shriley Ave.</div>
+                        <div>London</div>
+                        <div>EJHM99</div>
+                        <div>+44 899388829</div>
+                        <div>E-mail: Mroberts@pt.com</div>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="stats__head">Shopify Order No.</div>
+                      <div>99283</div>
+                    </div>
+                    <div className="stats__buttons">
+                      <div>
+                        <button className="stats__btn_status">Status</button>
+                      </div>
+                      <div>
+                        <button className="stats__btn_replace">Request replacement</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Item</th>
+                        <th>Item Internal</th>
+                        <th>Quantity</th>
+                        <th>Unit Cost</th>
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{data.customerId._id}</td>
+                        <td>{data.customerId.name}</td>
+                        <td>{data.customerId.lastname}</td>
+                        <td>{data.customerId.phone}</td>
+                        <td>{data.customerId.city}</td>
+                        <td>{data.customerId.city}</td>
+                      </tr>
+                    </tbody>
+                  </div>
+                  <div>
+                    <div className="chat">
+                      <div className="chat__title">Contact <span>Trade portal</span></div>
+                      <div className="chat__area">
+                        <div className="chat__chat">
+                          <div>01-07-2020: Automatic message - inffucient funds, orders on hold,</div>
+                          <div>please add funds and change status</div>
+                          <div>07-07-2020: Replacement approved - new Mug sent.</div>
+                          <div>Order id Replacement: 293889</div>
+                        </div>
+                        <div className="chat__send-message">
+                          <input type='text' />
+                          <button className="send-btn">Send</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="grand-total">
+                      <div>
+                        <div>
+                          <div>Shipping Method:</div>
+                          <div>Sub-total:</div>
+                          <div>shipping:</div>
+                          <div>VAT</div>
+                        </div>
+                        <div>Grand Total</div>
+                      </div>
+                      <div>
+                        <div>
+                          <div>Royal Mail Regular</div>
+                          <div>£27.00</div>
+                          <div>£0.00</div>
+                          <div>£3.00</div>
+                        </div>
+                        <div>£30.00</div>
+                      </div>
+                    </div>
+                  </div>
                 </Table>
 
               </Collapse>

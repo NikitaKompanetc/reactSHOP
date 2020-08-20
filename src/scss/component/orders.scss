@@ -1,0 +1,62 @@
+.details-btn {
+  border: 0;
+  padding: 10px;
+  background: #004B60;
+  color: #fff;
+
+  &:after {
+    content: '';
+    display: inline-block;
+    margin-top: 0;
+    margin-left: 0.6em;
+    width: .5em;
+    height: .5em;
+    border-top: 0.1em solid;
+    border-right: 0.1em solid;
+    transform: rotate(135deg);
+  }
+}
+
+.billing-stats {
+  display: flex;
+  justify-content: space-between;
+
+  .stats__head {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .stats__buttons {
+    display: flex;
+    justify-content: flex-start;
+
+    .stats__btn_status,
+    .stats__btn_replace {
+      height: auto;
+      margin: 2px;
+      border: 0;
+      padding: 1rem;
+    }
+
+    .stats__btn_status {
+      background: #E78624;
+      color: #fff;
+    }
+
+    .stats__btn_replace {
+      background: #004B60;
+      color: #fff;
+    }
+  }
+}
+
+.chat {
+  .send-btn {
+    height: auto;
+    margin: 2px;
+    border: 0;
+    padding: .3rem;
+    background: #004B60;
+    color: #fff;
+  }
+}

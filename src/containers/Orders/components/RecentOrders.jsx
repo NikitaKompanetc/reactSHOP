@@ -5,6 +5,9 @@ import PropTypes from "prop-types";
 import Panel from "../../../shared/components/Panel";
 import { useState, useEffect } from "react";
 import RecentOrdersCollapse from "./RecentOrdersCollapse";
+import Tick from '../../../shared/img/Tick.svg';
+import Parcel from '../../../shared/img/Parcel.svg';
+import Exclamation from '../../../shared/img/Exclamation.svg';
 
 const RecentOrders = ({ t, ...props }) => {
   const getDate = date => {
@@ -84,7 +87,9 @@ const RecentOrders = ({ t, ...props }) => {
                   <td>{getDate(product.products.importDate)}</td>
                   <td>{product.customerId.city}</td>
                   <td>
-                    <Badge color="success">In Progress</Badge>
+                    <div className="processed"><img src={Tick} height={24} /></div>
+                    <div className="shipped"><img src={Parcel} height={24} /></div>
+                    <div className="issues"><img src={Exclamation} height={24} /></div>
                   </td>
                   <td>
                     <button

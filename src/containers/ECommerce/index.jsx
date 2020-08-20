@@ -14,7 +14,8 @@ import { RTLProps } from "../helpers/prop-types/ReducerProps";
 import axios from "axios";
 import BalanceFounds from "./components/BalanceFounds";
 import ManageProducts from "./components/ManageProducts";
-import Payment from '../Payment/index';
+
+
 
 class ECommerceDashboard extends PureComponent {
   // static propTypes = {
@@ -26,6 +27,7 @@ class ECommerceDashboard extends PureComponent {
 
   state = {
     ordersData: [],
+    collapse: false,
   };
 
   // onDeleteRow = (index, e) => {
@@ -45,6 +47,7 @@ class ECommerceDashboard extends PureComponent {
   //     ordersData: orders,
   //   });
   // }
+
 
   render() {
     // console.log(this.state.ordersData, "bbbbbb");
@@ -71,7 +74,6 @@ class ECommerceDashboard extends PureComponent {
         </Row>
         <Row>
           <ManageProducts />
-          <Payment />
         </Row>
       </Container>
     );

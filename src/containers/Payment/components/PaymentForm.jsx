@@ -5,10 +5,14 @@ import * as PropTypes from 'prop-types';
 import MaskedInput from 'react-text-mask';
 import CreditCardIcon from 'mdi-react/CreditCardIcon';
 import renderRadioButtonField from '../../helpers/components/form/RadioButton';
+import MasterCard from '../../../shared/img/mastercard.svg';
+import VisaCard from '../../../shared/img/visa.svg';
+import PayPal from '../../../shared/img/paypal.svg';
 
-const MasterCard = `${process.env.PUBLIC_URL}/img/for_store/cards/mc.svg`;
-const VisaCard = `${process.env.PUBLIC_URL}/img/for_store/cards/visa.svg`;
-const PayPal = `${process.env.PUBLIC_URL}/img/for_store/cards/paypal.svg`;
+
+// const MasterCard = `${process.env.PUBLIC_URL}/img/for_store/cards/mc.svg`;
+// const VisaCard = `${process.env.PUBLIC_URL}/img/for_store/cards/visa.svg`;
+// const PayPal = `${process.env.PUBLIC_URL}/img/for_store/cards/paypal.svg`;
 
 const renderField = ({
   input, placeholder, type, mask,

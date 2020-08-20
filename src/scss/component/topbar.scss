@@ -317,6 +317,7 @@
     background: themed("colorBackground");
   }
 
+
   &.topbar__collapse-content--language {
     max-width: 75px;
     padding: 10px 0;
@@ -802,6 +803,20 @@
     color: themed("colorIcon");
   }
 }
+
+.payment-popup {
+  width: calc(540px + 10px);
+  bottom: 300px;
+  left: 30%;
+
+  .btn {
+    background: #C4C41E;
+    color: #fff;
+    border: 0;
+    border-radius: 0;
+  }
+}
+
 
 .rtl-support {
   .topbar__submenu {

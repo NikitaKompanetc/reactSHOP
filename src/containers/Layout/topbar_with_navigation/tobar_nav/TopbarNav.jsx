@@ -11,7 +11,7 @@ const TopbarNav = () => (
   <div className="topbar__nav tabs tabs--bordered-top">
     <div className="tabs__wrap ">
       <Nav tabs>
-        <NavItem>
+        {/* <NavItem>
           <NavLink
             className="nav-link"
             activeClassName="active"
@@ -70,7 +70,49 @@ const TopbarNav = () => (
           >
             Orders
           </NavLink>
+        </NavItem> */}
+        <NavItem>
+          <NavLink
+            className="nav-link"
+            activeClassName="active"
+            exact
+            to="/dashboard"
+          >
+            Dashboard
+          </NavLink>
         </NavItem>
+        <NavItem>
+          <NavLink
+            className="nav-link"
+            activeClassName="active"
+            exact
+            to="/orders"
+          >
+            Orders
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            className="nav-link"
+            activeClassName="active"
+            exact
+            to="/shipping"
+          >
+            Shipping Info
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            className="nav-link"
+            activeClassName="active"
+            exact
+            to="/faq"
+          >
+            FAQ
+          </NavLink>
+        </NavItem>
+
+
       </Nav>
       <div className="notifications">
         <div className="balance__div">

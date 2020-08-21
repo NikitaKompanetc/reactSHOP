@@ -47,8 +47,9 @@ const RecentOrders = ({ t, ...props }) => {
     ) {
       const orders = [];
       props.ordersData.data.forEach((pro, i) => {
-        pro.customerId["toggleVal" + pro._id] = false;
-        pro.products["toggleVal" + pro._id] = false;
+        console.log(50, pro)
+        pro["toggleVal" + pro._id] = false;
+        pro["toggleVal" + pro._id] = false;
         orders.push(pro);
       });
       setOrdersData(orders);
@@ -78,14 +79,14 @@ const RecentOrders = ({ t, ...props }) => {
               <>
                 <tr>
                   <td>{i + 1}</td>
-                  <td>{product._id}</td>
-                  <td>{`${product.customerId.name} ${product.customerId.lastname}`}</td>
-                  <td>
-                    {product.products.model}
-                  </td>
+                  <td key={product._id}>{product._id}</td>
+                  <td>{`${product.customerName}`}</td>
+                  {/* <td>
+                    {product.model}
+                  </td> */}
                   <td>1</td>
-                  <td>{getDate(product.products.importDate)}</td>
-                  <td>{product.customerId.city}</td>
+                  <td>{getDate(product.date)}</td>
+                  <td>{product.billingCountry}</td>
                   <td>
                     <div className="processed"><img src={Tick} height={24} /></div>
                     <div className="shipped"><img src={Parcel} height={24} /></div>

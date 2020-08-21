@@ -31,9 +31,24 @@ class Orders extends PureComponent {
   //   dispatch(deleteNewOrderTableData(arrayCopy));
   // };
 
+  // async componentDidMount() {
+  //   const orders = await axios.get(
+  //     `https://young-refuge-16506.herokuapp.com/api/orders`
+  //   );
+  //   console.log(37, orders)
+  //   this.setState({
+  //     ordersData: orders,
+  //   });
+  // }
   async componentDidMount() {
     const orders = await axios.get(
-      `https://young-refuge-16506.herokuapp.com/api/orders`
+      `https://afdbea8d0b3b.ngrok.io/api/printsterOrders/`,
+      {
+        headers: {
+          'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjFlZjU4ZTI5MGIwNjM1YTRiYmY1NzkiLCJzaG9wTmFtZSI6IlByaW50c3RlclRlc3QiLCJzaG9wRW1haWwiOiJpbmZvQHNvbHZlZXRvLmRrIiwiaXNBZG1pbiI6dHJ1ZSwiYWNjZXNzVG9rZW4iOiJzaHBhdF82NDUwOTMzYTI4MmRmYzlmNTNhMWQ2NTYxOTYyNzAyMiIsInNob3BVcmwiOiJwcmludHN0ZXJ0ZXN0Lm15c2hvcGlmeS5jb20iLCJpYXQiOjE1OTU4NjUxNDN9.KbP1-46OB4Flq4o9fNLP6ncBXnlP1AXBaamiOLjMAqw',
+          'Access-Control-Allow-Origin': '*',
+        }
+      }
     );
     console.log(37, orders)
     this.setState({

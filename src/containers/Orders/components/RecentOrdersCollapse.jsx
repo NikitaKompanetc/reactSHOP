@@ -9,14 +9,14 @@ export default class RecentOrdersCollapse extends Component {
     const { title, data, id } = this.props;
     return (
       <tr>
-        {(data.customerId["toggleVal" + id] || data.products["toggleVal" + id]) &&
+        {(data["toggleVal" + id]) &&
           <td colSpan="8">
             {title == "customerId" ? (
               <Collapse style={{
                 padding: "10px",
                 border: "2px solid #dee2e6"
               }
-              } isOpen={data.customerId["toggleVal" + id]}>
+              } isOpen={data["toggleVal" + id]}>
                 <Table responsive className="table--bordered">
                   {/* <thead>
                     <tr>
@@ -85,12 +85,11 @@ export default class RecentOrdersCollapse extends Component {
                     </thead>
                     <tbody>
                       <tr>
-                        <td>{data.customerId._id}</td>
-                        <td>{data.customerId.name}</td>
-                        <td>{data.customerId.lastname}</td>
-                        <td>{data.customerId.phone}</td>
-                        <td>{data.customerId.city}</td>
-                        <td>{data.customerId.city}</td>
+                        <td>{data._id}</td>
+                        <td>{data.customerName}</td>
+                        {/* <td>{data.customerId.phone}</td> */}
+                        <td>{data.billingCountry}</td>
+                        <td>{data.billingStreet}</td>
                       </tr>
                     </tbody>
                   </div>
@@ -139,7 +138,7 @@ export default class RecentOrdersCollapse extends Component {
                   padding: "10px",
                   border: "2px solid #dee2e6"
                 }
-                } isOpen={data.products["toggleVal" + id]}>
+                } isOpen={data["toggleVal" + id]}>
                   <Table responsive className="table--bordered">
                     <thead>
                       <tr>
@@ -159,8 +158,8 @@ export default class RecentOrdersCollapse extends Component {
                     </thead>
                     <tbody>
                       <tr>
-                        <td>{data.products._id}</td>
-                        <td>{data.products.brand}</td>
+                        <td>{data._id}</td>
+                        {/* <td>{data.products.brand}</td>
                         <td>{data.products.brandReferenceId}</td>
                         <td>{data.products.model}</td>
                         <td>{data.products.EAN}</td>
@@ -170,7 +169,7 @@ export default class RecentOrdersCollapse extends Component {
                         <td>{data.products.priceAora}</td>
                         <td>{data.products.priceWwt}</td>
                         <td>{data.products.stockWwt}</td>
-                        <td>{data.products.suggestedPriceWwt}</td>
+                        <td>{data.products.suggestedPriceWwt}</td> */}
                       </tr>
                     </tbody>
                   </Table>

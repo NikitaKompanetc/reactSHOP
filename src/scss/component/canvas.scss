@@ -1,53 +1,117 @@
 .canvas-containers {
     position: relative;
-    
+
     .canvas-container {
         // position: absolute !important;
         top: 0;
         left: 0;
     }
 }
+
 #c {
     margin: 20px 10px;
     //box-shadow: 0px 0px 1px 1px #00000054;
 }
+
 .color-block {
     height: 25px;
     width: 25px;
     cursor: pointer;
     margin: 5px;
 }
+
 .color-group {
     display: flex;
+
     div {
         margin: 5px
     }
 }
+
 .selectedColor {
     border-radius: 15px;
     transition: all .3s ease-out;
 }
 
-.color1 { background:  #ABABAB }
-.color2 { background:  #191919 }
-.color3 { background:  #462E00 }
-.color4 { background:  #3E3E3E }
-.color5 { background:  #B3D5CB }
-.color6 { background:  #E2B9A7 }
-.color7 { background:  #CADAD8 }
-.color8 { background:  #DBE2E8 }
-.color9  { background:  #D1C0D4 }
-.color10  { background:  #BFD4B8 }
-.color11  { background:  #DFCABD }
-.color12  { background:  #E5B2A0 }
-.color13  { background:  #007A53 }
-.color14  { background:  #46612B }
-.color15  { background:  #1C2449 }
-.color16  { background:  #EA6101 }
-.color17  { background:  #C0001A }
-.color18  { background:  #FAE3FA }
-.color19  { background:  #1B0390 }
-.color20 { background:  #2B4AF0 }
+.color1 {
+    background: #ABABAB
+}
+
+.color2 {
+    background: #191919
+}
+
+.color3 {
+    background: #462E00
+}
+
+.color4 {
+    background: #3E3E3E
+}
+
+.color5 {
+    background: #B3D5CB
+}
+
+.color6 {
+    background: #E2B9A7
+}
+
+.color7 {
+    background: #CADAD8
+}
+
+.color8 {
+    background: #DBE2E8
+}
+
+.color9 {
+    background: #D1C0D4
+}
+
+.color10 {
+    background: #BFD4B8
+}
+
+.color11 {
+    background: #DFCABD
+}
+
+.color12 {
+    background: #E5B2A0
+}
+
+.color13 {
+    background: #007A53
+}
+
+.color14 {
+    background: #46612B
+}
+
+.color15 {
+    background: #1C2449
+}
+
+.color16 {
+    background: #EA6101
+}
+
+.color17 {
+    background: #C0001A
+}
+
+.color18 {
+    background: #FAE3FA
+}
+
+.color19 {
+    background: #1B0390
+}
+
+.color20 {
+    background: #2B4AF0
+}
 
 .canvas-container {
     position: relative;
@@ -72,9 +136,11 @@
         }
     }
 }
+
 .color-select {
     display: flex;
 }
+
 .option-tools {
     display: flex;
     justify-content: center;
@@ -83,37 +149,42 @@
     .tool {
         width: 30px;
         margin-right: 5px;
+
         .img-tool {
             border: solid 2px orange;
             text-align: center;
             padding: 5px;
             font-size: .625rem;
             cursor: pointer;
+
             &:hover {
                 border-radius: 15px;
                 transition: all .5s ease-out;
                 background: #80808033;
             }
         }
-        
+
     }
 }
+
 label {
     cursor: pointer;
     /* Style as you please, it will become the visible UI component. */
- }
- 
- #imgLoader {
+}
+
+#imgLoader {
     opacity: 0;
     position: absolute;
     z-index: -1;
- }
+}
+
 .canvas--container {
     display: flex;
 }
+
 .addition-tools {
     position: relative;
-    
+
     .shapes-list {
         position: absolute;
         left: 70px;
@@ -124,8 +195,9 @@ label {
         background: #c4c41e;
         z-index: 99;
         cursor: pointer;
-     }
+    }
 }
+
 .navigation-canvas {
     display: flex;
     justify-content: space-between;
@@ -138,19 +210,27 @@ label {
         color: #fff;
     }
 }
+
 .finalize--container {
 
     .canvas-container {
         height: 400px;
     }
-    .navigation-canvas, .tools-canvas-container, .canvas-instruments--container > .option-tools {
+
+    .navigation-canvas,
+    .tools-canvas-container,
+    .canvas-instruments--container>.option-tools {
         display: none;
     }
+
     .color-select {
         margin: 30px 0px 15px;
     }
+
     .choose-size {
         display: flex;
+        justify-content: space-between;
+
         .size {
             background: #80808033;
             padding: 5px;
@@ -161,29 +241,44 @@ label {
             cursor: pointer;
             border: 0;
         }
+
         .selectedsize {
             background: #C4C41E;
         }
+
+        .allvarients {
+            border: solid 1px #000;
+            padding: 10px;
+        }
+
+        .item-variant {
+            border-bottom: solid 1px black;
+        }
     }
+
     .addeds-btn {
-        margin: 0 10px;
-    
-    .simple-btn {
-        text-decoration: none;
-        border: 0;
-        background: #004B60;
-        padding: .7rem 1.5rem;
-        color: #fff;
-        &:disabled {
-            background: #979797;
+        margin: 10px 5px;
+
+        .simple-btn {
+            text-decoration: none;
+            border: 0;
+            background: #004B60;
+            padding: .7rem 1.5rem;
+            color: #fff;
+
+            &:disabled {
+                background: #979797;
             }
         }
-    }   
-    
+    }
+
 }
+
 .container-step2 {
 
-    .color-select, .pick-color, .choose-size {
+    .color-select,
+    .pick-color,
+    .choose-size {
         display: none;
     }
 }

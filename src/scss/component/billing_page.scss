@@ -1,0 +1,42 @@
+.billing-container {
+  margin-bottom: 20px;
+
+  .billing-table {
+    display: flex;
+
+    .billing-date-from,
+    .billing-date-to {
+      padding-right: 1rem;
+    }
+  }
+}
+
+.transaction-table {
+  width: 100%;
+  margin-bottom: 1rem;
+  border: dashed 1px #E78624;
+
+  .head-table-transaction {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: dashed 1px #E78624;
+
+    div {
+      padding: 5px;
+      width: 12%;
+    }
+  }
+
+  .body-table-transaction {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    div {
+      padding: 5px;
+      width: 12%;
+    }
+  }
+
+}

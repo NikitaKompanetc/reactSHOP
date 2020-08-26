@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Nav, NavItem } from "reactstrap";
 import TopbarMail from "./TopbarMail";
 import TopbarNotification from "./TopbarNotification";
+import TopBarBilling from "./TopbarBilling";
 
 const TopbarNav = () => (
   // <nav className="topbar__nav">
@@ -120,6 +121,7 @@ const TopbarNav = () => (
           <span>€8930</span>
         </div>
         <div className="notify__div">
+          <TopBarBilling />
           <TopbarNotification />
           <TopbarMail />
         </div>

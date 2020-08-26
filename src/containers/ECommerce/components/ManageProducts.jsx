@@ -14,7 +14,7 @@ const ManageProducts = () => (
         <ManageProductsItem titleProduct={'Create Product'} link={'/catalog/product/step/1'} imageProduct={CreateProduct} nameProductButton={'Create Product'} />
       </Col>
       <Col md={4} className="product-manage-containers">
-        <ManageProductsItem titleProduct={'Link Products'} link={'#'} imageProduct={LinkProduct} nameProductButton={'Link Products'} />
+        <ManageProductsItem titleProduct={'Link Products'} link={'/link-existing-products'} imageProduct={LinkProduct} nameProductButton={'Link Products'} />
       </Col>
       <Col md={4} className="product-manage-containers">
         <ManageProductsItem titleProduct={'Edit Products'} link={'#'} imageProduct={EditProduct} nameProductButton={'Edit Products'} />

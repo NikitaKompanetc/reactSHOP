@@ -2,668 +2,709 @@ import React, { Component } from 'react';
 import Api from "../../api";
 import { connect } from 'react-redux';
 import Catalog from '.';
-
-
-
-
 class ContainerCatalog extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            productArr: [
-                {
-                    "printMethod": [
-                        "Garment"
-                    ],
-                    "materials": [
-                        "Keramik"
-                    ],
-                    "colors": [],
-                    "images": [
-                        "Image1",
-                        "image2"
-                    ],
-                    "specialAccess": [
-                        "5f11926cb8be78eb7c59b3a9",
-                        "5f11926cb8be78eb7c59b3a8",
-                        "5f1ef58e290b0635a4bbf579"
-                    ],
-                    "specialPrice": [
-                        {
-                            "shopId1": "5f1ef58e290b0635a4bbf579",
-                            "price": 9.98
-                        }
-                    ],
-                    "_id": "5f3ba7a659e1b23b18a3c9d2",
-                    "name": "A new printster product",
-                    "leadTime": 3,
-                    "price": 9.98,
-                    "availability": "Not available",
-                    "printTemplate": "http://printts.co.uk/yourtemplate",
-                    "productType": "T-shirt",
-                    "artWorkTeam": "Copenhagen",
-                    "artWorkTeamFinal": "wwwwww.",
-                    "workFlow": "test",
-                    "weight": 100,
-                    "generalInfo": "This is a Mug",
-                    "brand": "Printster",
-                    "packaging": "information about the packaging",
-                    "printsterSKU": "E7EJJK99",
-                    "minQty": 0,
-                    "designService": false,
-                    "customPackaging": true,
-                    "customerMessage": "true",
-                    "customInsert": "true",
-                    "image": "image_front",
-                    "isStandardProduct": false,
-                    "variants": [
-                        {
-                            "printFiles": [],
-                            "servicesAndUpsells": [],
-                            "_id": "5f2313ad6278a819a4da9000",
-                            "name": "Green / mkl",
-                            "brand": "Gildan",
-                            "weight": 200,
-                            "image": "https://imagetotheProduct.com",
-                            "colour": "Green",
-                            "size": "mkl"
-                        }
-                    ],
-                    "__v": 0,
-                    "id": "5f3ba7a659e1b23b18a3c9d2"
-                },
-                {
-                    "printMethod": [
-                        "Garment"
-                    ],
-                    "materials": [
-                        "Keramik"
-                    ],
-                    "colors": [],
-                    "images": [
-                        "Image1",
-                        "image2"
-                    ],
-                    "specialAccess": [
-                        "5f11926cb8be78eb7c59b3a9",
-                        "5f11926cb8be78eb7c59b3a8"
-                    ],
-                    "specialPrice": [
-                        {
-                            "shopId1": "5f1ef58e290b0635a4bbf579",
-                            "price": 9.98
-                        }
-                    ],
-                    "_id": "5f2313a56278a819a4da8ffd",
-                    "name": "A new printster product",
-                    "leadTime": 3,
-                    "price": 9.98,
-                    "availability": "Not available",
-                    "printTemplate": "http://printts.co.uk/yourtemplate",
-                    "productType": "T-shirt",
-                    "artWorkTeam": "Copenhagen",
-                    "artWorkTeamFinal": "wwwwww.",
-                    "workFlow": "test",
-                    "weight": 100,
-                    "generalInfo": "This is a Mug",
-                    "brand": "Printster",
-                    "packaging": "information about the packaging",
-                    "printsterSKU": "E7EJJK99",
-                    "minQty": 0,
-                    "designService": false,
-                    "customPackaging": true,
-                    "customerMessage": "true",
-                    "customInsert": "true",
-                    "image": "image_front",
-                    "isStandardProduct": false,
-                    "variants": [
-                        {
-                            "printFiles": [],
-                            "servicesAndUpsells": [],
-                            "_id": "5f2313a56278a819a4da8ffe",
-                            "name": "Green / mkl",
-                            "brand": "Gildan",
-                            "weight": 200,
-                            "image": "https://imagetotheProduct.com",
-                            "colour": "Green",
-                            "size": "mkl"
-                        }
-                    ],
-                    "__v": 0,
-                    "id": "5f2313a56278a819a4da8ffd"
-                },
-                {
-                    "printMethod": [
-                        "Garment"
-                    ],
-                    "materials": [
-                        "Keramik"
-                    ],
-                    "colors": [],
-                    "images": [
-                        "Image1",
-                        "image2"
-                    ],
-                    "specialAccess": [
-                        "5f11926cb8be78eb7c59b3a9",
-                        "5f11926cb8be78eb7c59b3a8",
-                        "5f1ef58e290b0635a4bbf579"
-                    ],
-                    "specialPrice": [
-                        {
-                            "shopId1": "5f1ef58e290b0635a4bbf579",
-                            "price": 9.98
-                        }
-                    ],
-                    "_id": "5f2313946278a819a4da8ffb",
-                    "name": "A new printster product",
-                    "leadTime": 3,
-                    "price": 9.98,
-                    "availability": "Not available",
-                    "printTemplate": "http://printts.co.uk/yourtemplate",
-                    "productType": "T-shirt",
-                    "artWorkTeam": "Copenhagen",
-                    "artWorkTeamFinal": "wwwwww.",
-                    "workFlow": "test",
-                    "weight": 100,
-                    "generalInfo": "This is a Mug",
-                    "brand": "Printster",
-                    "packaging": "information about the packaging",
-                    "printsterSKU": "E7EJJK99",
-                    "minQty": 0,
-                    "designService": false,
-                    "customPackaging": true,
-                    "customerMessage": "true",
-                    "customInsert": "true",
-                    "image": "image_front",
-                    "isStandardProduct": false,
-                    "variants": [
-                        {
-                            "printFiles": [],
-                            "servicesAndUpsells": [],
-                            "_id": "5f2313946278a819a4da8ffc",
-                            "name": "Green / mkl",
-                            "brand": "Gildan",
-                            "weight": 200,
-                            "image": "https://imagetotheProduct.com",
-                            "colour": "Green",
-                            "size": "mkl"
-                        }
-                    ],
-                    "__v": 0,
-                    "id": "5f2313946278a819a4da8ffb"
-                },
-                {
-                    "printMethod": [
-                        "Garment"
-                    ],
-                    "materials": [
-                        "Keramik"
-                    ],
-                    "colors": [],
-                    "images": [
-                        "Image1",
-                        "image2"
-                    ],
-                    "specialAccess": [
-                        "5f11926cb8be78eb7c59b3a9",
-                        "5f11926cb8be78eb7c59b3a8",
-                        "5f1ef58e290b0635a4bbf579"
-                    ],
-                    "specialPrice": [
-                        {
-                            "shopId1": "5f1ef58e290bbf579",
-                            "price": 9.98
-                        }
-                    ],
-                    "_id": "5f2310e59cfebee8a412387e",
-                    "name": "A new printster product",
-                    "leadTime": 3,
-                    "price": 5.99,
-                    "availability": "Not available",
-                    "printTemplate": "http://printts.co.uk/yourtemplate",
-                    "productType": "T-shirt",
-                    "artWorkTeam": "Copenhagen",
-                    "artWorkTeamFinal": "wwwwww.",
-                    "workFlow": "test",
-                    "weight": 100,
-                    "generalInfo": "This is a Mug",
-                    "brand": "Printster",
-                    "packaging": "information about the packaging",
-                    "printsterSKU": "E7EJJK99",
-                    "minQty": 0,
-                    "designService": false,
-                    "customPackaging": true,
-                    "customerMessage": "true",
-                    "customInsert": "true",
-                    "image": "image_front",
-                    "isStandardProduct": false,
-                    "variants": [
-                        {
-                            "printFiles": [],
-                            "servicesAndUpsells": [],
-                            "_id": "5f2310e59cfebee8a412387f",
-                            "name": "Green / mkl",
-                            "brand": "Gildan",
-                            "weight": 200,
-                            "image": "https://imagetotheProduct.com",
-                            "colour": "Green",
-                            "size": "mkl"
-                        }
-                    ],
-                    "__v": 0,
-                    "id": "5f2310e59cfebee8a412387e"
-                },
-                {
-                    "printMethod": [
-                        "Garment"
-                    ],
-                    "materials": [
-                        "Keramik"
-                    ],
-                    "colors": [],
-                    "images": [
-                        "Image1",
-                        "image2"
-                    ],
-                    "specialAccess": [
-                        "5f11926cb8be78eb7c59b3a9",
-                        "5f11926cb8be78eb7c59b3a8",
-                        "5f1ef58e290b0635a4bbf579"
-                    ],
-                    "specialPrice": [
-                        {
-                            "shopId1": "5f1ef58e290b0635a4cbf579",
-                            "price": 9.98
-                        }
-                    ],
-                    "_id": "5f2310d99cfebee8a412387c",
-                    "name": "A new printster product",
-                    "leadTime": 3,
-                    "price": 5.99,
-                    "availability": "Not available",
-                    "printTemplate": "http://printts.co.uk/yourtemplate",
-                    "productType": "T-shirt",
-                    "artWorkTeam": "Copenhagen",
-                    "artWorkTeamFinal": "wwwwww.",
-                    "workFlow": "test",
-                    "weight": 100,
-                    "generalInfo": "This is a Mug",
-                    "brand": "Printster",
-                    "packaging": "information about the packaging",
-                    "printsterSKU": "E7EJJK99",
-                    "minQty": 0,
-                    "designService": false,
-                    "customPackaging": true,
-                    "customerMessage": "true",
-                    "customInsert": "true",
-                    "image": "image_front",
-                    "isStandardProduct": false,
-                    "variants": [
-                        {
-                            "printFiles": [],
-                            "servicesAndUpsells": [],
-                            "_id": "5f2310d99cfebee8a412387d",
-                            "name": "Green / mkl",
-                            "brand": "Gildan",
-                            "weight": 200,
-                            "image": "https://imagetotheProduct.com",
-                            "colour": "Green",
-                            "size": "mkl"
-                        }
-                    ],
-                    "__v": 0,
-                    "id": "5f2310d99cfebee8a412387c"
-                },
-                {
-                    "printMethod": [
-                        "Garment"
-                    ],
-                    "materials": [
-                        "Keramik"
-                    ],
-                    "colors": [],
-                    "images": [
-                        "Image1",
-                        "image2"
-                    ],
-                    "specialAccess": [
-                        "5f11926cb8be78eb7c59b3a9",
-                        "5f11926cb8be78eb7c59b3a8",
-                        "5f1ef58e290b0635a4bbf579"
-                    ],
-                    "specialPrice": [
-                        {
-                            "shopId1": "5f1ef58e290b0635a4cbf579",
-                            "price": 9.98
-                        }
-                    ],
-                    "_id": "5f2310cf9cfebee8a412387a",
-                    "name": "A new printster product",
-                    "leadTime": 3,
-                    "price": 5.99,
-                    "availability": "Not available",
-                    "printTemplate": "http://printts.co.uk/yourtemplate",
-                    "productType": "T-shirt",
-                    "artWorkTeam": "Copenhagen",
-                    "artWorkTeamFinal": "wwwwww.",
-                    "workFlow": "test",
-                    "weight": 100,
-                    "generalInfo": "This is a Mug",
-                    "brand": "Printster",
-                    "packaging": "information about the packaging",
-                    "printsterSKU": "E7EJJK99",
-                    "minQty": 0,
-                    "designService": false,
-                    "customPackaging": true,
-                    "customerMessage": "true",
-                    "customInsert": "true",
-                    "image": "image_front",
-                    "isStandardProduct": false,
-                    "variants": [
-                        {
-                            "printFiles": [],
-                            "servicesAndUpsells": [],
-                            "_id": "5f2310cf9cfebee8a412387b",
-                            "name": "Green / mkl",
-                            "brand": "Gildan",
-                            "weight": 200,
-                            "image": "https://imagetotheProduct.com",
-                            "colour": "Green",
-                            "size": "mkl"
-                        }
-                    ],
-                    "__v": 0,
-                    "id": "5f2310cf9cfebee8a412387a"
-                },
-                {
-                    "printMethod": [
-                        "Garment"
-                    ],
-                    "materials": [
-                        "Keramik"
-                    ],
-                    "colors": [],
-                    "images": [
-                        "Image1",
-                        "image2"
-                    ],
-                    "specialAccess": [
-                        "5f11926cb8be78eb7c59b3a9",
-                        "5f11926cb8be78eb7c59b3a8",
-                        "5f1ef58e290b0635a4bbf579"
-                    ],
-                    "specialPrice": [
-                        {
-                            "shopId1": "5f1ef58e290b0635a4bbf579",
-                            "price": 9.98
-                        }
-                    ],
-                    "_id": "5f22ca4beef3ee684c044899",
-                    "name": "A new printster product",
-                    "leadTime": 3,
-                    "price": 9.98,
-                    "availability": "Not available",
-                    "printTemplate": "http://printts.co.uk/yourtemplate",
-                    "productType": "T-shirt",
-                    "artWorkTeam": "Copenhagen",
-                    "artWorkTeamFinal": "wwwwww.",
-                    "workFlow": "test",
-                    "weight": 100,
-                    "generalInfo": "This is a Mug",
-                    "brand": "Printster",
-                    "packaging": "information about the packaging",
-                    "printsterSKU": "E7EJJK99",
-                    "minQty": 0,
-                    "designService": false,
-                    "customPackaging": true,
-                    "customerMessage": "true",
-                    "customInsert": "true",
-                    "image": "image_front",
-                    "isStandardProduct": false,
-                    "variants": [
-                        {
-                            "printFiles": [],
-                            "servicesAndUpsells": [],
-                            "_id": "5f22ca4beef3ee684c04489a",
-                            "name": "Green / mkl",
-                            "brand": "Gildan",
-                            "weight": 200,
-                            "image": "https://imagetotheProduct.com",
-                            "colour": "Green",
-                            "size": "mkl"
-                        }
-                    ],
-                    "__v": 0,
-                    "id": "5f22ca4beef3ee684c044899"
-                },
-                {
-                    "printMethod": [
-                        "Garment"
-                    ],
-                    "materials": [
-                        "Keramik"
-                    ],
-                    "colors": [],
-                    "images": [
-                        "Image1",
-                        "image2"
-                    ],
-                    "specialAccess": [
-                        "5f11926cb8be78eb7c59b3a9",
-                        "5f11926cb8be78eb7c59b3a8",
-                        "5f1ef58e290b0635a4bbf579"
-                    ],
-                    "specialPrice": [
-                        {
-                            "shopId1": "5f1196cb8be78eb7c59b3a9",
-                            "price": 50.98
-                        },
-                        {
-                            "shopId1": "5f11926cb8be78eb7c59b3a9",
-                            "price": 2.5
-                        },
-                        {
-                            "shopId1": "5f1192cb8be78eb7c59b3a9",
-                            "price": 3.98
-                        }
-                    ],
-                    "_id": "5f22c66ce7eee0504097a576",
-                    "name": "A new printster product",
-                    "leadTime": 3,
-                    "price": 5.99,
-                    "availability": "Not available",
-                    "printTemplate": "http://printts.co.uk/yourtemplate",
-                    "productType": "T-shirt",
-                    "artWorkTeam": "Copenhagen",
-                    "artWorkTeamFinal": "wwwwww.",
-                    "workFlow": "test",
-                    "weight": 100,
-                    "generalInfo": "This is a Mug",
-                    "brand": "Printster",
-                    "packaging": "information about the packaging",
-                    "printsterSKU": "E7EJJK99",
-                    "minQty": 0,
-                    "designService": false,
-                    "customPackaging": true,
-                    "customerMessage": "true",
-                    "customInsert": "true",
-                    "image": "image_front",
-                    "isStandardProduct": false,
-                    "variants": [
-                        {
-                            "printFiles": [],
-                            "servicesAndUpsells": [],
-                            "_id": "5f22c66ce7eee0504097a577",
-                            "name": "Green / mkl",
-                            "brand": "Gildan",
-                            "weight": 200,
-                            "image": "https://imagetotheProduct.com",
-                            "colour": "Green",
-                            "size": "mkl"
-                        }
-                    ],
-                    "__v": 0,
-                    "id": "5f22c66ce7eee0504097a576"
-                },
-                {
-                    "printMethod": [
-                        "Garment"
-                    ],
-                    "materials": [
-                        "Keramik"
-                    ],
-                    "colors": [],
-                    "images": [
-                        "Image1",
-                        "image2"
-                    ],
-                    "specialAccess": [
-                        "5f11926cb8be78eb7c59b3a9",
-                        "5f11926cb8be78eb7c59b3a8",
-                        "5f1ef58e290b0635a4bbf579"
-                    ],
-                    "specialPrice": [
-                        {
-                            "shopId1": "5f11926cb8be78eb7c59b3a9",
-                            "price": 9.98
-                        }
-                    ],
-                    "_id": "5f21cb69f4fa0d545c8b5985",
-                    "name": "A new printster product",
-                    "leadTime": 3,
-                    "price": 5.99,
-                    "availability": "Not available",
-                    "printTemplate": "http://printts.co.uk/yourtemplate",
-                    "productType": "T-shirt",
-                    "artWorkTeam": "Copenhagen",
-                    "artWorkTeamFinal": "wwwwww.",
-                    "workFlow": "test",
-                    "weight": 100,
-                    "generalInfo": "This is a Mug",
-                    "brand": "Printster",
-                    "packaging": "information about the packaging",
-                    "printsterSKU": "E7EJJK99",
-                    "minQty": 0,
-                    "designService": false,
-                    "customPackaging": true,
-                    "customerMessage": "true",
-                    "customInsert": "true",
-                    "image": "image_front",
-                    "isStandardProduct": false,
-                    "variants": [
-                        {
-                            "printFiles": [],
-                            "servicesAndUpsells": [],
-                            "_id": "5f21cb69f4fa0d545c8b5986",
-                            "name": "Green / mkl",
-                            "brand": "Gildan",
-                            "weight": 200,
-                            "image": "https://imagetotheProduct.com",
-                            "colour": "Green",
-                            "size": "mkl"
-                        }
-                    ],
-                    "__v": 0,
-                    "id": "5f21cb69f4fa0d545c8b5985"
-                },
-                {
-                    "printMethod": [
-                        "Garment"
-                    ],
-                    "materials": [
-                        "Keramik"
-                    ],
-                    "colors": [],
-                    "images": [
-                        "Image1",
-                        "image2"
-                    ],
-                    "specialAccess": [
-                        "5f11926cb8be78eb7c59b3a9",
-                        "5f11926cb8be78eb7c59b3a8",
-                        "5f1ef58e290b0635a4bbf579"
-                    ],
-                    "specialPrice": [
-                        {
-                            "shopId1": "5f11926cb8be78eb7c59b3a9",
-                            "price": 9.98
-                        }
-                    ],
-                    "_id": "5f21ca906623f0901402f7c1",
-                    "name": "A new printster product",
-                    "leadTime": 3,
-                    "price": 5.99,
-                    "availability": "Not available",
-                    "printTemplate": "http://printts.co.uk/yourtemplate",
-                    "productType": "T-shirt",
-                    "artWorkTeam": "Copenhagen",
-                    "artWorkTeamFinal": "wwwwww.",
-                    "workFlow": "test",
-                    "weight": 100,
-                    "generalInfo": "This is a Mug",
-                    "brand": "Printster",
-                    "packaging": "information about the packaging",
-                    "printsterSKU": "E7EJJK99",
-                    "minQty": 0,
-                    "designService": false,
-                    "customPackaging": true,
-                    "customerMessage": "true",
-                    "customInsert": "true",
-                    "image": "image_front",
-                    "isStandardProduct": false,
-                    "variants": [
-                        {
-                            "printFiles": [],
-                            "servicesAndUpsells": [],
-                            "_id": "5f21ca906623f0901402f7c2",
-                            "name": "Green / mkl",
-                            "brand": "Gildan",
-                            "weight": 200,
-                            "image": "https://imagetotheProduct.com",
-                            "colour": "Green",
-                            "size": "mkl"
-                        }
-                    ],
-                    "__v": 0,
-                    "id": "5f21ca906623f0901402f7c1"
-                }
-            ],
+  constructor(props) {
+    super(props);
+    this.state = {
+      productArr: [
+        "data"[
+        {
+          "printMethod": [
+            "Garment"
+          ],
+          "materials": [
+            "Keramik"
+          ],
+          "colors": [],
+          "images": [
+            "Image1",
+            "image2"
+          ],
+          "specialAccess": [
+            "5f11926cb8be78eb7c59b3a9",
+            "5f11926cb8be78eb7c59b3a8"
+          ],
+          "specialPrice": [
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a9",
+              "price": 9.98
+            },
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a2",
+              "price": 9.65
+            }
+          ],
+          "_id": "5f3fa437c1e0b123b059f553",
+          "name": "A new printster product",
+          "leadTime": 3,
+          "price": 5.99,
+          "availability": "Not available",
+          "printTemplate": "http://printts.co.uk/yourtemplate",
+          "productType": "T-shirt",
+          "artWorkTeam": "Copenhagen",
+          "artWorkTeamFinal": "wwwwww.",
+          "workFlow": "test",
+          "weight": 100,
+          "generalInfo": "This is a Mug",
+          "brand": {
+            "_id": "5f3d49443f88f73418b21882",
+            "name": "Mringster"
+          },
+          "packaging": "information about the packaging",
+          "printsterSKU": "E7EJJK99",
+          "minQty": 0,
+          "designService": false,
+          "customPackaging": true,
+          "customerMessage": "true",
+          "customInsert": "true",
+          "image": "image_front",
+          "isStandardProduct": true,
+          "variants": [
+            {
+              "printFiles": [],
+              "servicesAndUpsells": [],
+              "_id": "5f3e445d898c710ad04c1b44",
+              "name": "L / Red",
+              "brand": {
+                "_id": "5f3d49443f88f73418b21882",
+                "name": "Mringster"
+              },
+              "weight": 205,
+              "image": "The image",
+              "colour": "Red",
+              "size": "L",
+              "__v": 0
+            },
+            {
+              "printFiles": [],
+              "servicesAndUpsells": [],
+              "_id": "5f3e446e0b151740ac6e30e2",
+              "name": "L / Red",
+              "brand": {
+                "_id": "5f3d49443f88f73418b21882",
+                "name": "Mringster"
+              },
+              "weight": 205,
+              "image": "The image",
+              "colour": "Red",
+              "size": "L",
+              "__v": 0
+            }
+          ],
+          "__v": 0,
+          "id": "5f3fa437c1e0b123b059f553"
+        },
+        {
+          "printMethod": [
+            "Garment"
+          ],
+          "materials": [
+            "Keramik"
+          ],
+          "colors": [],
+          "images": [
+            "Image1",
+            "image2"
+          ],
+          "specialAccess": [
+            "5f11926cb8be78eb7c59b3a9",
+            "5f11926cb8be78eb7c59b3a8"
+          ],
+          "specialPrice": [
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a9",
+              "price": 9.98
+            },
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a2",
+              "price": 9.65
+            }
+          ],
+          "_id": "5f3fa3bac1e0b123b059f547",
+          "name": "A new printster product",
+          "leadTime": 3,
+          "price": 5.99,
+          "availability": "Not available",
+          "printTemplate": "http://printts.co.uk/yourtemplate",
+          "productType": "T-shirt",
+          "artWorkTeam": "Copenhagen",
+          "artWorkTeamFinal": "wwwwww.",
+          "workFlow": "test",
+          "weight": 100,
+          "generalInfo": "This is a Mug",
+          "brand": {
+            "_id": "5f3d49443f88f73418b21882",
+            "name": "Mringster"
+          },
+          "packaging": "information about the packaging",
+          "printsterSKU": "E7EJJK99",
+          "minQty": 0,
+          "designService": false,
+          "customPackaging": true,
+          "customerMessage": "true",
+          "customInsert": "true",
+          "image": "image_front",
+          "isStandardProduct": true,
+          "variants": [
+            {
+              "printFiles": [],
+              "servicesAndUpsells": [],
+              "_id": "5f3e445d898c710ad04c1b44",
+              "name": "L / Red",
+              "brand": {
+                "_id": "5f3d49443f88f73418b21882",
+                "name": "Mringster"
+              },
+              "weight": 205,
+              "image": "The image",
+              "colour": "Red",
+              "size": "L",
+              "__v": 0
+            },
+            {
+              "printFiles": [],
+              "servicesAndUpsells": [],
+              "_id": "5f3e446e0b151740ac6e30e2",
+              "name": "L / Red",
+              "brand": {
+                "_id": "5f3d49443f88f73418b21882",
+                "name": "Mringster"
+              },
+              "weight": 205,
+              "image": "The image",
+              "colour": "Red",
+              "size": "L",
+              "__v": 0
+            }
+          ],
+          "__v": 0,
+          "id": "5f3fa3bac1e0b123b059f547"
+        },
+        {
+          "printMethod": [
+            "Garment"
+          ],
+          "materials": [
+            "Keramik"
+          ],
+          "colors": [],
+          "images": [
+            "Image1",
+            "image2"
+          ],
+          "specialAccess": [
+            "5f11926cb8be78eb7c59b3a9",
+            "5f11926cb8be78eb7c59b3a8"
+          ],
+          "specialPrice": [
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a9",
+              "price": 9.98
+            },
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a2",
+              "price": 9.65
+            }
+          ],
+          "_id": "5f3e65fc67d9412980691991",
+          "name": "A new printster product",
+          "leadTime": 3,
+          "price": 5.99,
+          "availability": "Not available",
+          "printTemplate": "http://printts.co.uk/yourtemplate",
+          "productType": "T-shirt",
+          "artWorkTeam": "Copenhagen",
+          "artWorkTeamFinal": "wwwwww.",
+          "workFlow": "test",
+          "weight": 100,
+          "generalInfo": "This is a Mug",
+          "brand": {
+            "_id": "5f3d49443f88f73418b21882",
+            "name": "Mringster"
+          },
+          "packaging": "information about the packaging",
+          "printsterSKU": "E7EJJK99",
+          "minQty": 0,
+          "designService": false,
+          "customPackaging": true,
+          "customerMessage": "true",
+          "customInsert": "true",
+          "image": "image_front",
+          "isStandardProduct": true,
+          "variants": [
+            {
+              "printFiles": [],
+              "servicesAndUpsells": [],
+              "_id": "5f3e445d898c710ad04c1b44",
+              "name": "L / Red",
+              "brand": {
+                "_id": "5f3d49443f88f73418b21882",
+                "name": "Mringster"
+              },
+              "weight": 205,
+              "image": "The image",
+              "colour": "Red",
+              "size": "L",
+              "__v": 0
+            },
+            {
+              "printFiles": [],
+              "servicesAndUpsells": [],
+              "_id": "5f3e446e0b151740ac6e30e2",
+              "name": "L / Red",
+              "brand": {
+                "_id": "5f3d49443f88f73418b21882",
+                "name": "Mringster"
+              },
+              "weight": 205,
+              "image": "The image",
+              "colour": "Red",
+              "size": "L",
+              "__v": 0
+            }
+          ],
+          "__v": 0,
+          "id": "5f3e65fc67d9412980691991"
+        },
+        {
+          "printMethod": [
+            "Garment"
+          ],
+          "materials": [
+            "Keramik"
+          ],
+          "colors": [],
+          "images": [
+            "Image1",
+            "image2"
+          ],
+          "specialAccess": [
+            "5f11926cb8be78eb7c59b3a9",
+            "5f11926cb8be78eb7c59b3a8"
+          ],
+          "specialPrice": [
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a9",
+              "price": 9.98
+            },
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a2",
+              "price": 9.65
+            }
+          ],
+          "_id": "5f3e5ae098c00a3e04dbc700",
+          "name": "A new printster product",
+          "leadTime": 3,
+          "price": 5.99,
+          "availability": "Not available",
+          "printTemplate": "http://printts.co.uk/yourtemplate",
+          "productType": "T-shirt",
+          "artWorkTeam": "Copenhagen",
+          "artWorkTeamFinal": "wwwwww.",
+          "workFlow": "test",
+          "weight": 100,
+          "generalInfo": "This is a Mug",
+          "brand": {
+            "_id": "5f3d49443f88f73418b21882",
+            "name": "Mringster"
+          },
+          "packaging": "information about the packaging",
+          "printsterSKU": "E7EJJK99",
+          "minQty": 0,
+          "designService": false,
+          "customPackaging": true,
+          "customerMessage": "true",
+          "customInsert": "true",
+          "image": "image_front",
+          "isStandardProduct": true,
+          "variants": [
+            {
+              "printFiles": [],
+              "servicesAndUpsells": [],
+              "_id": "5f3e445d898c710ad04c1b44",
+              "name": "L / Red",
+              "brand": {
+                "_id": "5f3d49443f88f73418b21882",
+                "name": "Mringster"
+              },
+              "weight": 205,
+              "image": "The image",
+              "colour": "Red",
+              "size": "L",
+              "__v": 0
+            },
+            {
+              "printFiles": [],
+              "servicesAndUpsells": [],
+              "_id": "5f3e446e0b151740ac6e30e2",
+              "name": "L / Red",
+              "brand": {
+                "_id": "5f3d49443f88f73418b21882",
+                "name": "Mringster"
+              },
+              "weight": 205,
+              "image": "The image",
+              "colour": "Red",
+              "size": "L",
+              "__v": 0
+            }
+          ],
+          "__v": 0,
+          "id": "5f3e5ae098c00a3e04dbc700"
+        },
+        {
+          "printMethod": [
+            "Garment"
+          ],
+          "materials": [
+            "Keramik"
+          ],
+          "colors": [],
+          "images": [
+            "Image1",
+            "image2"
+          ],
+          "specialAccess": [
+            "5f11926cb8be78eb7c59b3a9",
+            "5f11926cb8be78eb7c59b3a8"
+          ],
+          "specialPrice": [
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a9",
+              "price": 9.98
+            },
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a2",
+              "price": 9.65
+            }
+          ],
+          "_id": "5f3e4d2a426d552e74cd6179",
+          "name": "A new printster product",
+          "leadTime": 3,
+          "price": 5.99,
+          "availability": "Not available",
+          "printTemplate": "http://printts.co.uk/yourtemplate",
+          "productType": "T-shirt",
+          "artWorkTeam": "Copenhagen",
+          "artWorkTeamFinal": "wwwwww.",
+          "workFlow": "test",
+          "weight": 100,
+          "generalInfo": "This is a Mug",
+          "brand": {
+            "_id": "5f3d49443f88f73418b21882",
+            "name": "Mringster"
+          },
+          "packaging": "information about the packaging",
+          "printsterSKU": "E7EJJK99",
+          "minQty": 0,
+          "designService": false,
+          "customPackaging": true,
+          "customerMessage": "true",
+          "customInsert": "true",
+          "image": "image_front",
+          "isStandardProduct": true,
+          "variants": [
+            {
+              "printFiles": [],
+              "servicesAndUpsells": [],
+              "_id": "5f3e446e0b151740ac6e30e2",
+              "name": "L / Red",
+              "image": "The image",
+              "colour": "Red",
+              "size": "L"
+            }
+          ],
+          "__v": 0,
+          "id": "5f3e4d2a426d552e74cd6179"
+        },
+        {
+          "printMethod": [
+            "Garment"
+          ],
+          "materials": [
+            "Keramik"
+          ],
+          "colors": [],
+          "images": [
+            "Image1",
+            "image2"
+          ],
+          "specialAccess": [
+            "5f11926cb8be78eb7c59b3a9",
+            "5f11926cb8be78eb7c59b3a8"
+          ],
+          "specialPrice": [
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a9",
+              "price": 9.98
+            },
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a2",
+              "price": 9.65
+            }
+          ],
+          "_id": "5f3e3c56413b4328ac837e8e",
+          "name": "A new printster product",
+          "leadTime": 3,
+          "price": 5.99,
+          "availability": "Not available",
+          "printTemplate": "http://printts.co.uk/yourtemplate",
+          "productType": "T-shirt",
+          "artWorkTeam": "Copenhagen",
+          "artWorkTeamFinal": "wwwwww.",
+          "workFlow": "test",
+          "weight": 100,
+          "generalInfo": "This is a Mug",
+          "brand": {
+            "_id": "5f3d49443f88f73418b21882",
+            "name": "Mringster"
+          },
+          "packaging": "information about the packaging",
+          "printsterSKU": "E7EJJK99",
+          "minQty": 0,
+          "designService": false,
+          "customPackaging": true,
+          "customerMessage": "true",
+          "customInsert": "true",
+          "image": "image_front",
+          "isStandardProduct": true,
+          "variants": [
+            {
+              "printFiles": [],
+              "servicesAndUpsells": [],
+              "_id": "5f3e3c56413b4328ac837e90",
+              "name": "Green / mkl",
+              "weight": 200,
+              "image": "https://imagetotheProduct.com",
+              "colour": "Green",
+              "size": "mkl"
+            }
+          ],
+          "__v": 0,
+          "id": "5f3e3c56413b4328ac837e8e"
+        },
+        {
+          "printMethod": [
+            "Garment"
+          ],
+          "materials": [
+            "Keramik"
+          ],
+          "colors": [
+            "black",
+            "white"
+          ],
+          "images": [
+            "Image1",
+            "image2"
+          ],
+          "specialAccess": [
+            "5f11926cb8be78eb7c59b3a9",
+            "5f11926cb8be78eb7c59b3a8",
+            "5f11926cb8be78eb7c59b3a9",
+            "5f11926cb8be78eb7c59b3a8",
+            null,
+            "5f11926cb8be78eb7c59b3a9",
+            "5f11926cb8be78eb7c59b3a8",
+            "5f11926cb8be78eb7c59b3a9",
+            "5f11926cb8be78eb7c59b3a8",
+            "5f11926cb8be78eb7c59b3a9",
+            "5f11926cb8be78eb7c59b3a8"
+          ],
+          "specialPrice": [
+            {
+              "shopId1": "5f1ef58e290b0635a4bbf579",
+              "price": 55.98
+            },
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a9",
+              "price": 9.98
+            },
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a2",
+              "price": 9.65
+            },
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a9",
+              "price": 9.98
+            },
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a2",
+              "price": 9.65
+            },
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a9",
+              "price": 9.98
+            },
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a2",
+              "price": 9.65
+            },
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a9",
+              "price": 9.98
+            },
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a2",
+              "price": 9.65
+            },
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a9",
+              "price": 9.98
+            },
+            {
+              "shopId1": "5f11926cb8be78eb7c59b3a2",
+              "price": 9.65
+            }
+          ],
+          "_id": "5f3d55a5ea834656a0c95421",
+          "name": "A new printster product",
+          "leadTime": 3,
+          "price": 55.98,
+          "availability": "Not available",
+          "printTemplate": "http://printts.co.uk/yourtemplate",
+          "productType": "T-shirt",
+          "artWorkTeam": "Copenhagen",
+          "artWorkTeamFinal": "wwwwww.",
+          "workFlow": "test",
+          "weight": 100,
+          "generalInfo": "This is a Mug",
+          "brand": {
+            "_id": "5f3d49443f88f73418b21882",
+            "name": "Mringster"
+          },
+          "packaging": "information about the packaging",
+          "printsterSKU": "E7EJJK99",
+          "minQty": 0,
+          "designService": false,
+          "customPackaging": true,
+          "customerMessage": "true",
+          "customInsert": "true",
+          "image": "image_front",
+          "isStandardProduct": true,
+          "variants": [
+            {
+              "printFiles": [],
+              "servicesAndUpsells": [],
+              "_id": "5f3d55a5ea834656a0c95423",
+              "name": "Green / mkl",
+              "weight": 200,
+              "image": "https://imagetotheProduct.com",
+              "colour": "Green",
+              "size": "mkl"
+            },
+            {
+              "printFiles": [],
+              "servicesAndUpsells": [],
+              "_id": "5f3d582bc63bba2c1c98ef62",
+              "name": "Green / mkl",
+              "weight": 200,
+              "image": "https://imagetotheProduct.com",
+              "colour": "Green",
+              "size": "mkl"
+            },
+            {
+              "printFiles": [],
+              "servicesAndUpsells": [],
+              "_id": "5f3d5847c63bba2c1c98ef7f",
+              "name": "Green / mkl",
+              "weight": 200,
+              "image": "https://imagetotheProduct.com",
+              "colour": "Green",
+              "size": "mkl"
+            },
+            {
+              "printFiles": [],
+              "servicesAndUpsells": [],
+              "_id": "5f3d587d5cd41a4540a37f21",
+              "name": "Green / mkl",
+              "weight": 200,
+              "image": "https://imagetotheProduct.com",
+              "colour": "Green",
+              "size": "mkl"
+            },
+            {
+              "printFiles": [],
+              "servicesAndUpsells": [],
+              "_id": "5f3d58da13c2af2da8f0707e",
+              "name": "Green / mkl",
+              "weight": 200,
+              "image": "https://imagetotheProduct.com",
+              "colour": "Green",
+              "size": "mkl"
+            },
+            {
+              "printFiles": [],
+              "servicesAndUpsells": [],
+              "_id": "5f3d5989f110c1339cf40c92",
+              "name": "Green / mkl",
+              "weight": 200,
+              "image": "https://imagetotheProduct.com",
+              "colour": "Green",
+              "size": "mkl"
+            }
+          ],
+          "__v": 0,
+          "id": "5f3d55a5ea834656a0c95421"
         }
+        ]
+      ],
+      categoryName: [
+        { name: 'T-shirt' },
+        { name: 'Hoodies' },
+        { name: 'Mugs' },
+        { name: 'Socks' },
+        { name: 'Face masks' },
+        { name: 'Keyrings' },
+        { name: 'Cards' },
+        { name: 'Gift Wraps' },
+        { name: 'Posters' }
+      ],
+      targetCategory: 'T-shirt',
     }
+  }
+  componentDidMount() {
+    this.productData();
+  }
+  filterCategory = (item) => {
+    console.log(21, item)
+    this.setState({
+      targetCategory: item
+    })
+    // this.state.productArr.data.forEach(element => {
+    // const filteredArray = this.state.productArr.data.filter(productType => productType === 'T-shirt')
+    // console.log(20, filteredArray)
+    //})
+  }
+  productData = () => {
+    Api.get(`https://afdbea8d0b3b.ngrok.io/api/printsterProducts`, { headers: { 'x-auth-token': `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjFlZjU4ZTI5MGIwNjM1YTRiYmY1NzkiLCJzaG9wTmFtZSI6IlByaW50c3RlclRlc3QiLCJzaG9wRW1haWwiOiJpbmZvQHNvbHZlZXRvLmRrIiwiaXNBZG1pbiI6dHJ1ZSwiYWNjZXNzVG9rZW4iOiJzaHBhdF82NDUwOTMzYTI4MmRmYzlmNTNhMWQ2NTYxOTYyNzAyMiIsInNob3BVcmwiOiJwcmludHN0ZXJ0ZXN0Lm15c2hvcGlmeS5jb20iLCJpYXQiOjE1OTU4NjUxNDN9.KbP1-46OB4Flq4o9fNLP6ncBXnlP1AXBaamiOLjMAqw` } })
+      .then((data) => {
+        this.setState({
+          productArr: data
+        })
+        console.log(11, data)
+      })
+      .catch((error) => {
+      });
+  }
 
-    componentDidMount() {
-        //this.productData();
+  render() {
 
-    }
+    return (
+      <Catalog
+        productArr={this.state.productArr}
+        filterCategory={this.filterCategory}
+        categoryName={this.state.categoryName}
+        targetCategory={this.state.targetCategory}
+      />
+    )
+  }
 
-    // productData = () => {
-    //     Api.get(`https://afdbea8d0b3b.ngrok.io/api/printsterProducts`, { headers: { 'x-auth-token':  `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjFlZjU4ZTI5MGIwNjM1YTRiYmY1NzkiLCJzaG9wTmFtZSI6IlByaW50c3RlclRlc3QiLCJzaG9wRW1haWwiOiJpbmZvQHNvbHZlZXRvLmRrIiwiaXNBZG1pbiI6dHJ1ZSwiYWNjZXNzVG9rZW4iOiJzaHBhdF82NDUwOTMzYTI4MmRmYzlmNTNhMWQ2NTYxOTYyNzAyMiIsInNob3BVcmwiOiJwcmludHN0ZXJ0ZXN0Lm15c2hvcGlmeS5jb20iLCJpYXQiOjE1OTU4NjUxNDN9.KbP1-46OB4Flq4o9fNLP6ncBXnlP1AXBaamiOLjMAqw` } })
-    //     .then(( data ) => {
-    //         this.setState({
-    //             productArr: data
-    //         })
-    //             console.log(11, data)
-    //         })
-    //     .catch((error) => {
-
-    //         });
-    //     }
-
-
-
-    render() {
-       
-        return (
-          <Catalog productArr={this.state.productArr}  />        
-          )
-      }
-    
 };
 
 const mapStateToProps = store => {
-    return {
-    }
+  return {
   }
+}
 
-export default connect(mapStateToProps)(ContainerCatalog) ;
+export default connect(mapStateToProps)(ContainerCatalog);

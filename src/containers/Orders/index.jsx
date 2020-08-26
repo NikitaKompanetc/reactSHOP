@@ -9,6 +9,7 @@ import '../../scss/component/orders.scss'
 // import { NewOrderTableProps } from "../../../shared/prop-types/TablesProps";
 // import { RTLProps } from "../../../shared/prop-types/ReducerProps";
 import axios from "axios";
+import DataOrders from './data.json';
 
 class Orders extends PureComponent {
   // static propTypes = {
@@ -19,8 +20,9 @@ class Orders extends PureComponent {
   // };
 
   state = {
-    ordersData: [],
+    ordersData: DataOrders,
   };
+
 
   // onDeleteRow = (index, e) => {
   //   const { dispatch, newOrder } = this.props;
@@ -40,25 +42,29 @@ class Orders extends PureComponent {
   //     ordersData: orders,
   //   });
   // }
+
+
   async componentDidMount() {
     const orders = await axios.get(
       `https://afdbea8d0b3b.ngrok.io/api/printsterOrders/`,
       {
         headers: {
-          'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjFlZjU4ZTI5MGIwNjM1YTRiYmY1NzkiLCJzaG9wTmFtZSI6IlByaW50c3RlclRlc3QiLCJzaG9wRW1haWwiOiJpbmZvQHNvbHZlZXRvLmRrIiwiaXNBZG1pbiI6dHJ1ZSwiYWNjZXNzVG9rZW4iOiJzaHBhdF82NDUwOTMzYTI4MmRmYzlmNTNhMWQ2NTYxOTYyNzAyMiIsInNob3BVcmwiOiJwcmludHN0ZXJ0ZXN0Lm15c2hvcGlmeS5jb20iLCJpYXQiOjE1OTU4NjUxNDN9.KbP1-46OB4Flq4o9fNLP6ncBXnlP1AXBaamiOLjMAqw',
           'Access-Control-Allow-Origin': '*',
+          'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjFlZjU4ZTI5MGIwNjM1YTRiYmY1NzkiLCJzaG9wTmFtZSI6IlByaW50c3RlclRlc3QiLCJzaG9wRW1haWwiOiJpbmZvQHNvbHZlZXRvLmRrIiwiaXNBZG1pbiI6dHJ1ZSwiYWNjZXNzVG9rZW4iOiJzaHBhdF82NDUwOTMzYTI4MmRmYzlmNTNhMWQ2NTYxOTYyNzAyMiIsInNob3BVcmwiOiJwcmludHN0ZXJ0ZXN0Lm15c2hvcGlmeS5jb20iLCJpYXQiOjE1OTU4NjUxNDN9.KbP1-46OB4Flq4o9fNLP6ncBXnlP1AXBaamiOLjMAqw',
+
         }
       }
     );
-    console.log(37, orders)
     this.setState({
       ordersData: orders,
     });
   }
 
+
   render() {
     const { t, newOrder, rtl } = this.props;
-
+    console.log(78, DataOrders)
+    console.log(79, this.state.ordersData)
     return (
       <Container className="dashboard">
         <Row>
@@ -68,6 +74,7 @@ class Orders extends PureComponent {
           </Col>
         </Row>
         <Row>
+          <button onClick={() => this.takeData()}>take data</button>
           <RecentOrders ordersData={this.state.ordersData} />
         </Row>
       </Container>

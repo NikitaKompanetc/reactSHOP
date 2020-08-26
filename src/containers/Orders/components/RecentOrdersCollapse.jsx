@@ -18,24 +18,6 @@ export default class RecentOrdersCollapse extends Component {
               }
               } isOpen={data["toggleVal" + id]}>
                 <Table responsive className="table--bordered">
-                  {/* <thead>
-                    <tr>
-                      <th>Customer Id</th>
-                      <th>Name</th>
-                      <th>Last Name</th>
-                      <th>Phone</th>
-                      <th>City</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{data.customerId._id}</td>
-                      <td>{data.customerId.name}</td>
-                      <td>{data.customerId.lastname}</td>
-                      <td>{data.customerId.phone}</td>
-                      <td>{data.customerId.city}</td>
-                    </tr>
-                  </tbody> */}
                   <div className="billing-stats">
                     <div>
                       <div className="stats__head">Billing address</div>

@@ -5,7 +5,7 @@ import tShirt from '../../../img/Womens-T-Shirt-Example.png';
 import { Link } from 'react-router-dom';
 import CanvasTool from './canvasTool';
 import CatalogBtn from "./catalogBtn";
-
+import Emoji from '../../../img/emoji.png';
 import Upload from '../../../img/cloud-backup-up-arrow.svg';
 import Text from '../../../img/text.svg';
 import Shapes from '../../../img/shapes.svg';
@@ -22,7 +22,8 @@ import Emojis from '../../../img/emojis.svg';
 // import Print from '../../../img/print.svg';
 // import SaveIcon from '../../../img/save.svg';
 import svg_to_png from 'svg-to-png';
-import convertImage from './step3/convertImages'
+import convertImage from './step3/convertImages';
+
 
 
 
@@ -167,6 +168,7 @@ class CanvasPreview extends PureComponent {
       allVariant: [],
       multiSizeArr: [],
       multiColorArr: [],
+      productColorArr: [],
 
       imagesArr: []
     }
@@ -193,7 +195,7 @@ class CanvasPreview extends PureComponent {
   }
 
   canvasRender() {
-
+    //add main canvas
     let canvas = this.canvasik
     if (localStorage.getItem('canvas') === null) {
       var image;
@@ -238,6 +240,7 @@ class CanvasPreview extends PureComponent {
       if (lastColor !== color) {
         image.filters = [];
       }
+      //add color
       image.filters.push(new fabric.Image.filters.BlendColor({
         id: 'color',
         color: color,
@@ -245,14 +248,13 @@ class CanvasPreview extends PureComponent {
         alpha: 0.6,
         name: 'changeColorProduct'
       }))
-      console.log(244, canvas.getActiveObject())
-      console.log(245, canvas.getObjects())
       this.setState({ currentColor: color })
       image.applyFilters();
       canvas.add(image);
       canvas.requestRenderAll();
       lastColor = color;
 
+      //Move product under images
       canvas.getObjects().forEach(element => {
         if (element.cacheKey == 'texture0') {
           canvas.setActiveObject(element)
@@ -260,20 +262,36 @@ class CanvasPreview extends PureComponent {
           activeObj && canvas.bringToFront(activeObj).discardActiveObject(activeObj).renderAll();
         }
       })
-
-      //console.log(359, canvas.toSVG());
+      //check selected colors
       let middleArr = [...this.state.colorArray]
       let selectedSize = this.state.isSelectSize
       middleArr.map(elem => {
         if (elem.color === color)
           elem.isChecked = !elem.isChecked
-      })
+      });
+      //add dataURL colors for POST
+      if (this.state.productColorArr.some(element => element['color'] === color) === false) {
+        let url = canvas.toDataURL()
+        let colorUrl = {
+          color: color,
+          dataUrl: url
+        }
+        console.log(260, colorUrl)
+        this.state.productColorArr.push(colorUrl)
+        console.log(261, this.state.productColorArr)
+      } else {
+        let removeColor = this.state.productColorArr.findIndex(element => element.color === color)
+        console.log(286, removeColor)
+        this.state.productColorArr.splice(removeColor, 1)
+      }
+      console.log(288, this.state.productColorArr)
+      //set all value
       this.setState({
         colorArray: middleArr,
         isSelectSize: !selectedSize,
         isLockSizes: false
-      })
-      this.addMultiVariants()
+      });
+      this.addMultiVariants();
     };
 
 
@@ -298,7 +316,7 @@ class CanvasPreview extends PureComponent {
       };
       pugImg.src = imgURL;
     }
-
+    //add text input in canvas
     this.addText = () => {
       let textbox = new fabric.Textbox('Lorum ipsum dolor sit amet', {
         left: 100,
@@ -311,6 +329,7 @@ class CanvasPreview extends PureComponent {
       canvas.add(textbox);
       canvas.requestRenderAll();
     };
+    //add custom image
     this.uploadCustomImg = () => {
       document.getElementById('imgLoader').onchange = function handleImage(e) {
         var reader = new FileReader();
@@ -320,7 +339,6 @@ class CanvasPreview extends PureComponent {
           imgObj.src = event.target.result;
           imgObj.onload = function () {
             // start fabricJS stuff
-
             var image = new fabric.Image(imgObj);
             image.set({
               left: 30,
@@ -332,7 +350,6 @@ class CanvasPreview extends PureComponent {
             });
             //image.scale(getRandomNum(0.1, 0.25)).setCoords();
             canvas.add(image);
-
             // end fabricJS stuff
           }
 
@@ -359,13 +376,20 @@ class CanvasPreview extends PureComponent {
       var activeObj = canvas.getActiveObject();
       activeObj && canvas.sendToBack(activeObj).discardActiveObject(activeObj).renderAll();
     }
-    document.getElementById('tested').onclick = function () {
-      console.log(359, canvas.toSVG());
-      let imageColor = canvas.toSVG();
-      localStorage.setItem('imageColor', imageColor)
+    // document.getElementById('tested').onclick = function () {
+    //   // console.log(359, canvas.toSVG());
+    //   // let imageColor = canvas.toSVG();
+    //   //localStorage.setItem('imageColor', imageColor)
+    //   let image = canvas.toDataURL()
+    //   localStorage.setItem('image', image)
+    // }
+    this.clearCanvas = () => {
+      let image = canvas.toDataURL()
+      console.log(332, image)
     }
 
   };
+  //end canvas function
   getIndex(canvas) {
     var activeObj = canvas.getActiveObject();
     console.log(activeObj && canvas.getObjects().indexOf(activeObj));
@@ -378,17 +402,11 @@ class CanvasPreview extends PureComponent {
     var activeObj = canvas.getActiveObject();
     activeObj && canvas.sendToBack(activeObj).discardActiveObject(activeObj).renderAll();
   }
-
-
-
   //add color for step 3
   addColors(canvas, mainColor) {
     canvas.requestRenderAll();
     localStorage.setItem('canvas', JSON.stringify(canvas))
   }
-
-
-
   //clear product area
   clearStorage() {
     localStorage.removeItem('canvas')
@@ -396,7 +414,6 @@ class CanvasPreview extends PureComponent {
     localStorage.removeItem('selectedColor')
     window.location.reload();
   };
-
   //add text on product
   addText(canvas) {
     if (canvas) {
@@ -441,6 +458,7 @@ class CanvasPreview extends PureComponent {
       reader.readAsDataURL(e.target.files[0]);
     };
   };
+
   addShapeImage(image, canvas) {
     var imgURL = image;
     // var pugImg = new Image();
@@ -612,6 +630,7 @@ class CanvasPreview extends PureComponent {
     this.state.sizeSelected = [];
   }
   addCompleteMulti() {
+    localStorage.setItem('productColors', JSON.stringify(this.state.productColorArr))
     let sizeArr = this.state.multiSizeArr
     let colorArr = this.state.multiVariant
     sizeArr.forEach((size, ind) => {
@@ -649,7 +668,7 @@ class CanvasPreview extends PureComponent {
   convertImage() {
     //let colorProduct = localStorage.getItem('imageColor');
     convertImage();
-   
+
   }
 
   render() {
@@ -673,6 +692,7 @@ class CanvasPreview extends PureComponent {
         <div className="navigation-canvas">
           <button className='simple-btn' onClick={this.clearStorage} >Clear</button>
           <button className='simple-btn' onClick={() => this.addColors(this.canvasik, this.state.currentColor)}>Next step</button>
+          <button onClick={() => this.clearCanvas()} >clear canvas</button>
         </div>
         <div className='canvas--container'>
           <div className="tools-canvas-container">
@@ -739,7 +759,7 @@ class CanvasPreview extends PureComponent {
                   <div onClick={() => this.addShapeImage(emoji3, this.canvasik)}>
                     <img src={emoji3} />
                   </div>
-                  <div onClick={() => this.addShapeImage(emoji4, this.canvasik)}>
+                  <div onClick={() => this.addShapeImage(Emoji, this.canvasik)}>
                     <img src={emoji4} />
                   </div>
                 </div>
@@ -769,28 +789,34 @@ class CanvasPreview extends PureComponent {
             })}
           </div>
           <div className='choose-size'>
-            {this.state.sizeArray.map(item => {
-              return <button className={`size ${item.isChecked ? 'selectedsize' : 'unselected'}`} disabled={this.state.isLockSizes ? 'disabled' : null} onClick={() => this.selectedSize(item.size)}>{item.size}</button>
-            })}
-            <div className='addeds-btn'>
-              <button className='simple-btn' onClick={() => this.addCompleteSingle()} disabled={this.state.isAddSingle ? null : 'disabled'}>add sizes</button>
-            </div>
-            <div className='addeds-btn'>
-              <button className='simple-btn' onClick={() => this.addCompleteMulti()} disabled={this.state.isAddMulti ? null : 'disabled'}>add all</button>
-            </div>
-            <div className='allvarients'>
-              {this.state.allVariant.map(item => {
-                return (
-                  <div>
-                    <div>Color: {item.option1}</div>
-                    <div>Size: {item.option2}</div>
-                  </div>)
+            <div>
+              {this.state.sizeArray.map(item => {
+                return <button className={`size ${item.isChecked ? 'selectedsize' : 'unselected'}`} disabled={this.state.isLockSizes ? 'disabled' : null} onClick={() => this.selectedSize(item.size)}>{item.size}</button>
               })}
+              <div className='addeds-btn'>
+                <button className='simple-btn' onClick={() => this.addCompleteSingle()} disabled={this.state.isAddSingle ? null : 'disabled'}>add sizes</button>
+              </div>
+              <div className='addeds-btn'>
+                <button className='simple-btn' onClick={() => this.addCompleteMulti()} disabled={this.state.isAddMulti ? null : 'disabled'}>add all</button>
+              </div>
             </div>
-            <button id="tested">test</button>
+            <div>
+              <div className='allvarients'>
+                {this.state.allVariant.map(item => {
+                  return (
+                    <div className='item-variant'>
+                      <div>Color: {item.option1}</div>
+                      <div>Size: {item.option2}</div>
+                    </div>
+                  )
+                })
+                }
+              </div>
+            </div>
+            {/* <button id="tested">test</button>
             <button onClick={() => this.convertImage()}>convert image</button>
             <button onClick={() => this.bringToBack(this.canvasik)} >bringToBack</button>
-            <button onClick={() => this.bringToFront(this.canvasik)} >bringToFront</button>
+            <button onClick={() => this.bringToFront(this.canvasik)} >bringToFront</button> */}
           </div>
         </div>
       </div>
@@ -800,4 +826,3 @@ class CanvasPreview extends PureComponent {
 };
 
 export default CanvasPreview;
-

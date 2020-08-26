@@ -62,13 +62,13 @@ const RecentOrders = ({ t, ...props }) => {
       <Table responsive className="table--bordered">
         <thead>
           <tr>
-            <th>#</th>
-            <th>Order Id</th>
-            <th>Customer Name</th>
-            <th>Product</th>
-            <th>Quantity</th>
+            <th>Order No.</th>
             <th>Date</th>
-            <th>Location</th>
+            <th>Customer Name</th>
+            <th>Items</th>
+            <th>Shipping method</th>
+            <th>Total</th>
+            <th>Issues</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
@@ -77,20 +77,18 @@ const RecentOrders = ({ t, ...props }) => {
           {orders && orders.length
             ? orders.map((product, i) => (
               <>
-                <tr>
-                  <td>{i + 1}</td>
-                  <td key={product._id}>{product._id}</td>
-                  <td>{`${product.customerName}`}</td>
-                  {/* <td>
-                    {product.model}
-                  </td> */}
-                  <td>1</td>
+                <tr key={product._id}>
+                  <td>{product.orderNo}</td>
                   <td>{getDate(product.date)}</td>
-                  <td>{product.billingCountry}</td>
+                  <td>{`${product.customerName}`}</td>
+                  <td>1</td>
+                  <td>{product.shippingMethod}</td>
+                  <td>{product.total}</td>
+                  <td>{product.issues}</td>
                   <td>
-                    <div className="processed"><img src={Tick} height={24} /></div>
-                    <div className="shipped"><img src={Parcel} height={24} /></div>
-                    <div className="issues"><img src={Exclamation} height={24} /></div>
+                    {product.status === 'processing' ? <div className="processed"><img src={Tick} height={24} /></div> : null}
+                    {product.status === "cancelled" ? <div className="issues"><img src={Exclamation} height={24} /></div> : null}
+                    {product.status === 'delivered' ? <div className="shipped"><img src={Parcel} height={24} /></div> : null}
                   </td>
                   <td>
                     <button

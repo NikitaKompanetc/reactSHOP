@@ -11,11 +11,11 @@ const Steps = (props) => (
           <div className="row">
             <div className="col-md-12 progressbar">
               <form id="msform">
-                  <ul id="progressbar">
-                      <li className={props.isActivebar === 1 ? 'active' : ''}>Choose product</li>
-                      <li className={props.isActivebar === 2 ? 'active' : ''}>Design</li>
-                      <li className={props.isActivebar === 3 ? 'active' : ''}>Finalize</li>
-                  </ul>
+                <ul id="progressbar">
+                  <li className={props.isActivebar === 1 ? 'active' : null}>Choose product</li>
+                  <li className={props.isActivebar === 2 ? 'active' : null}>Design</li>
+                  <li className={props.isActivebar === 3 ? 'active' : null}>Finalize</li>
+                </ul>
               </form>
             </div>
           </div>

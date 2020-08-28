@@ -692,7 +692,6 @@ class CanvasPreview extends PureComponent {
         <div className="navigation-canvas">
           <button className='simple-btn' onClick={this.clearStorage} >Clear</button>
           <button className='simple-btn' onClick={() => this.addColors(this.canvasik, this.state.currentColor)}>Next step</button>
-          <button onClick={() => this.clearCanvas()} >clear canvas</button>
         </div>
         <div className='canvas--container'>
           <div className="tools-canvas-container">

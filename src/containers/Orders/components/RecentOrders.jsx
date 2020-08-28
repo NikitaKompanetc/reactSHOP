@@ -8,6 +8,7 @@ import RecentOrdersCollapse from "./RecentOrdersCollapse";
 import Tick from '../../../shared/img/Tick.svg';
 import Parcel from '../../../shared/img/Parcel.svg';
 import Exclamation from '../../../shared/img/Exclamation.svg';
+import SelectPagination from "../../helpers/components/SelectDefault";
 
 const RecentOrders = ({ t, ...props }) => {
   const getDate = date => {
@@ -19,25 +20,21 @@ const RecentOrders = ({ t, ...props }) => {
   const [orders, setOrdersData] = useState([]);
   const [check, toggleCheck] = useState(true);
   const [title, setTitle] = useState("");
-  //const [openDetails, setOpenDetails] = useState(fasle);
+  const [openDetails, setOpenDetails] = useState(false);
+  const [currentDetails, setCurrentDetails] = useState('');
 
-  const handleCollapse = (title1, title2, id) => {
-    const newOrders = [];
-    orders.forEach((pro, i) => {
-      if (id == pro._id) {
-        pro[title1]["toggleVal" + pro._id] = !pro[title1][
-          "toggleVal" + pro._id
-        ];
+  const openCurrentDetails = (event, id) => {
+    console.log(27, id);
+    setCurrentDetails(id)
+    orders.forEach(pro => {
+      console.log(39, pro._id)
+      if (currentDetails === pro._id) {
+        setOpenDetails(prevState => !prevState)
       } else {
-        pro[title1]["toggleVal" + pro._id] = false;
+        return
       }
-      pro[title2]["toggleVal" + pro._id] = false;
-      newOrders.push(pro);
-    });
-    setOrdersData(newOrders);
-    setTitle(title1);
+    })
   };
-
   useEffect(() => {
     if (
       check &&
@@ -59,6 +56,7 @@ const RecentOrders = ({ t, ...props }) => {
 
   return (
     <Panel lg={12} title={t("dashboard_orders.orders_list")}>
+      <SelectPagination testArr={orders} style={{ width: 'auto' }} />
       <Table responsive className="table--bordered">
         <thead>
           <tr>
@@ -92,17 +90,22 @@ const RecentOrders = ({ t, ...props }) => {
                   </td>
                   <td>
                     <button
-                      onClick={() =>
-                        handleCollapse("customerId", "products", product._id)
-                      }
+                      // onClick={() =>
+                      //   handleCollapse("customerId", "products", product._id)
+                      // }
+                      onClick={(e) =>
+                        openCurrentDetails(e, product._id)}
                       className='details-btn'
-                    >Details</button>
+                    >Details
+                    </button>
                   </td>
                 </tr>
                 <RecentOrdersCollapse
                   data={product}
                   title={title}
                   id={product._id}
+                  openDetails={openDetails}
+                  currentDetails={currentDetails}
                 />
               </>
             ))

@@ -50,7 +50,18 @@
   }
 }
 
-.chat {
+.chat-container {
+  .chat__area {
+    border: solid 1px #dee2e6;
+  }
+
+  .chat__chat {
+    width: 400px;
+    height: 150px;
+    overflow-y: scroll;
+    border-bottom: solid 1px red;
+  }
+
   .send-btn {
     height: auto;
     margin: 2px;

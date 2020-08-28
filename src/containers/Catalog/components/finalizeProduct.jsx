@@ -208,7 +208,7 @@ class FinalizeProduct extends PureComponent {
     }
     console.log(153, sendArray)
 
-    let requestUrl = "https://afdbea8d0b3b.ngrok.io";
+    let requestUrl = "https://a8ed81e6da8c.ngrok.io";
     // sending the x-auth-token which has the accesstoken of shopify with the request.
     let config = {
       headers: {

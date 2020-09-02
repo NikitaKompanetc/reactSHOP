@@ -5,22 +5,28 @@ import tShirt from '../../../img/Womens-T-Shirt-Example.png';
 import { Link } from 'react-router-dom';
 import CanvasTool from './canvasTool';
 import CatalogBtn from "./catalogBtn";
-import Emoji from '../../../img/emoji.png';
+
+
+import Shape1 from '../../../img/figure1.png';
+import Shape2 from '../../../img/figure2.png';
+import Shape3 from '../../../img/figure3.png';
+import Shape4 from '../../../img/figure4.png';
+import Shape5 from '../../../img/figure5.png';
+
+import Arts1 from '../../../img/shape1.png';
+import Arts2 from '../../../img/shape4.png';
+
+import Emoji1 from '../../../img/emoji1.png';
+import Emoji2 from '../../../img/emoji2.png';
+import Emoji3 from '../../../img/emoji3.png';
+import Emoji4 from '../../../img/emoji4.png';
+
 import Upload from '../../../img/cloud-backup-up-arrow.svg';
 import Text from '../../../img/text.svg';
 import Shapes from '../../../img/shapes.svg';
 import ClipArts from '../../../img/art.svg';
 import Emojis from '../../../img/emojis.svg';
-// import Draw from '../../../img/draw.svg';
-// import canvasToImage from 'canvas-to-image';
 
-// import CircleRight from '../../../img/circleRight.svg';
-// import CircleLeft from '../../../img/circleLeft.svg';
-// import ZoomIn from '../../../img/zoom-in.svg';
-// import ZoomOut from '../../../img/zoom-out.svg';
-// import CloudDownload from '../../../img/cloud-computing.svg';
-// import Print from '../../../img/print.svg';
-// import SaveIcon from '../../../img/save.svg';
 import svg_to_png from 'svg-to-png';
 import convertImage from './step3/convertImages';
 
@@ -227,13 +233,10 @@ class CanvasPreview extends PureComponent {
     } else {
       canvas.loadFromJSON(localStorage.getItem('canvas'), canvas.renderAll.bind(canvas));
     }
-    console.log(222, image)
     var image;
     setTimeout(() => {
       image = canvas._objects[0]
     }, 500);
-    console.log(226, image)
-
     this.changeColor = (color, elem) => {
       //add and change current color
       let lastColor = '#fff';
@@ -246,7 +249,9 @@ class CanvasPreview extends PureComponent {
         color: color,
         mode: 'overlay',
         alpha: 0.6,
-        name: 'changeColorProduct'
+        name: 'changeColorProduct',
+        hasControls: false,
+        hasBorders: false,
       }))
       this.setState({ currentColor: color })
       image.applyFilters();
@@ -255,13 +260,21 @@ class CanvasPreview extends PureComponent {
       lastColor = color;
 
       //Move product under images
+      let lastObject = [];
       canvas.getObjects().forEach(element => {
-        if (element.cacheKey == 'texture0') {
+        let a = element.cacheKey
+        if (a !== undefined) {
+          let cacheValue = element.cacheKey.replace(/\D/g, "");
+          lastObject.push(cacheValue)
+        }
+
+        if (element.cacheKey !== `texture${lastObject[0]}`) {
           canvas.setActiveObject(element)
           var activeObj = canvas.getActiveObject();
           activeObj && canvas.bringToFront(activeObj).discardActiveObject(activeObj).renderAll();
         }
       })
+
       //check selected colors
       let middleArr = [...this.state.colorArray]
       let selectedSize = this.state.isSelectSize
@@ -276,15 +289,15 @@ class CanvasPreview extends PureComponent {
           color: color,
           dataUrl: url
         }
-        console.log(260, colorUrl)
+
         this.state.productColorArr.push(colorUrl)
-        console.log(261, this.state.productColorArr)
+
       } else {
         let removeColor = this.state.productColorArr.findIndex(element => element.color === color)
-        console.log(286, removeColor)
+
         this.state.productColorArr.splice(removeColor, 1)
       }
-      console.log(288, this.state.productColorArr)
+
       //set all value
       this.setState({
         colorArray: middleArr,
@@ -314,6 +327,7 @@ class CanvasPreview extends PureComponent {
         });
         canvas.add(pug);
       };
+
       pugImg.src = imgURL;
     }
     //add text input in canvas
@@ -327,6 +341,7 @@ class CanvasPreview extends PureComponent {
         name: 'addText'
       });
       canvas.add(textbox);
+
       canvas.requestRenderAll();
     };
     //add custom image
@@ -334,7 +349,6 @@ class CanvasPreview extends PureComponent {
       document.getElementById('imgLoader').onchange = function handleImage(e) {
         var reader = new FileReader();
         reader.onload = function (event) {
-          console.log('fdsf');
           var imgObj = new Image();
           imgObj.src = event.target.result;
           imgObj.onload = function () {
@@ -354,6 +368,14 @@ class CanvasPreview extends PureComponent {
           }
 
         }
+        //Move product under images
+        // canvas.getObjects().forEach(element => {
+        //   if (element.cacheKey == 'texture0') {
+        //     canvas.setActiveObject(element)
+        //     var activeObj = canvas.getActiveObject();
+        //     activeObj && canvas.bringToFront(activeObj).discardActiveObject(activeObj).renderAll();
+        //   }
+        // })
         reader.readAsDataURL(e.target.files[0]);
       }
     };
@@ -364,36 +386,29 @@ class CanvasPreview extends PureComponent {
       localStorage.setItem('canvas', JSON.stringify(canvas));
       window.location.href = '/catalog/product/step/3';
     };
-    this.getIndex = () => {
-      var activeObj = canvas.getActiveObject();
-      console.log(activeObj && canvas.getObjects().indexOf(activeObj));
-    }
-    this.bringToFront = () => {
-      var activeObj = canvas.getActiveObject();
-      activeObj && canvas.bringToFront(activeObj).discardActiveObject(activeObj).renderAll();
-    }
-    this.bringToBack = () => {
-      var activeObj = canvas.getActiveObject();
-      activeObj && canvas.sendToBack(activeObj).discardActiveObject(activeObj).renderAll();
-    }
-    // document.getElementById('tested').onclick = function () {
-    //   // console.log(359, canvas.toSVG());
-    //   // let imageColor = canvas.toSVG();
-    //   //localStorage.setItem('imageColor', imageColor)
-    //   let image = canvas.toDataURL()
-    //   localStorage.setItem('image', image)
+    // this.getIndex = () => {
+    //   var activeObj = canvas.getActiveObject();
+    //   console.log(activeObj && canvas.getObjects().indexOf(activeObj));
     // }
-    this.clearCanvas = () => {
-      let image = canvas.toDataURL()
-      console.log(332, image)
-    }
+    // this.bringToFront = () => {
+    //   var activeObj = canvas.getActiveObject();
+    //   activeObj && canvas.bringToFront(activeObj).discardActiveObject(activeObj).renderAll();
+    // }
+    // this.bringToBack = () => {
+    //   var activeObj = canvas.getActiveObject();
+    //   activeObj && canvas.sendToBack(activeObj).discardActiveObject(activeObj).renderAll();
+    // }
+    // this.clearCanvas = () => {
+    //   let image = canvas.toDataURL()
+    //   console.log(332, image)
+    // }
 
   };
   //end canvas function
-  getIndex(canvas) {
-    var activeObj = canvas.getActiveObject();
-    console.log(activeObj && canvas.getObjects().indexOf(activeObj));
-  }
+  // getIndex(canvas) {
+  //   var activeObj = canvas.getActiveObject();
+  //   console.log(activeObj && canvas.getObjects().indexOf(activeObj));
+  // }
   bringToFront(canvas) {
     var activeObj = canvas.getActiveObject();
     activeObj && canvas.bringToFront(activeObj).discardActiveObject(activeObj).renderAll();
@@ -434,7 +449,7 @@ class CanvasPreview extends PureComponent {
     document.getElementById('imgLoader').onchange = function handleImage(e) {
       var reader = new FileReader();
       reader.onload = function (event) {
-        console.log('fdsf');
+
         var imgObj = new Image();
         imgObj.src = event.target.result;
         imgObj.onload = function () {
@@ -541,7 +556,7 @@ class CanvasPreview extends PureComponent {
     this.setState({
       sizeSelected: this.state.sizeSelected
     })
-    console.log(46, this.state.sizeSelected)
+
     this.addSingleVariants()
     this.addMultiVariants()
   }
@@ -568,13 +583,13 @@ class CanvasPreview extends PureComponent {
       })
     }
 
-    console.log(533, this.state.singleVariant)
+
   }
   addMultiVariants() {
     let count = 0;
     this.state.multiColorArr = [...this.state.colorArray];
     this.state.multiSizeArr = [...this.state.sizeSelected];
-    console.log(544, this.state.multiVariant)
+
     this.state.multiColorArr.forEach(el => {
       if (el.isChecked === true) {
         if (this.state.multiVariant.includes(el.color) === false) {
@@ -586,7 +601,7 @@ class CanvasPreview extends PureComponent {
       }
 
     })
-    console.log(548, this.state.multiVariant)
+
 
     if (this.state.sizeSelected.length >= 2 || count >= 2) {
       this.setState({
@@ -672,21 +687,6 @@ class CanvasPreview extends PureComponent {
   }
 
   render() {
-    const shape1 = 'https://avatanplus.com/files/resources/original/57cbfb032a6d3156f4cc8466.png';
-    const shape2 = 'https://pngimg.com/uploads/circle/circle_PNG44.png';
-    const shape3 = 'https://avatanplus.com/files/resources/original/5ac78e8f2840c1629b84df3d.png';
-    const shape4 = 'https://avatars.mds.yandex.net/get-pdb/1771637/4d70f4fd-f30c-400d-aae1-d3f984e7c562/s1200?webp=false';
-    const shape5 = 'https://avatanplus.com/files/resources/original/57cbfb032a6d3156f4cc8466.png';
-
-    const arts1 = 'https://www.pngitem.com/pimgs/m/37-375858_transparent-free-flourish-clipart-fancy-clipart-png-png.png';
-    const arts2 = 'https://www.pinclipart.com/picdir/middle/320-3203349_png-file-clipart.png';
-    const arts3 = 'https://www.pinclipart.com/picdir/middle/320-3203349_png-file-clipart.png';
-    const arts4 = 'https://www.pinclipart.com/picdir/middle/320-3203349_png-file-clipart.png';
-
-    const emoji1 = 'https://i.pinimg.com/originals/cb/06/cf/cb06cfc39ac3d3c2774433694f47660e.png';
-    const emoji2 = 'https://i.pinimg.com/originals/13/c7/3e/13c73e46e0dca5e83650d67305401888.png';
-    const emoji3 = 'https://i.pinimg.com/originals/cf/95/f1/cf95f100fc563442c7860f59431f343e.png';
-    const emoji4 = 'https://i.pinimg.com/originals/e3/f1/fb/e3f1fb2636225f42bdf2137535636850.png';
     return (
       <div>
         <div className="navigation-canvas">
@@ -708,20 +708,20 @@ class CanvasPreview extends PureComponent {
               <CanvasTool source={Shapes} name={'SHAPES'} height={24} />
               {this.state.showImages ?
                 <div className='shapes-list'>
-                  <div onClick={() => this.addShapeImage(shape1, this.canvasik)}>
-                    <img src={shape1} />
+                  <div onClick={() => this.addShapeImage(Shape1, this.canvasik)}>
+                    <img src={Shape1} />
                   </div>
-                  <div onClick={() => this.addShapeImage(shape2, this.canvasik)} >
-                    <img src={shape2} />
+                  <div onClick={() => this.addShapeImage(Shape2, this.canvasik)} >
+                    <img src={Shape2} />
                   </div>
-                  <div onClick={() => this.addShapeImage(shape3, this.canvasik)}>
-                    <img src={shape3} />
+                  <div onClick={() => this.addShapeImage(Shape3, this.canvasik)}>
+                    <img src={Shape3} />
                   </div>
-                  <div onClick={() => this.addShapeImage(shape4, this.canvasik)}>
-                    <img src={shape4} />
+                  <div onClick={() => this.addShapeImage(Shape4, this.canvasik)}>
+                    <img src={Shape4} />
                   </div>
-                  <div onClick={() => this.addShapeImage(shape5, this.canvasik)}>
-                    <img src={shape5} />
+                  <div onClick={() => this.addShapeImage(Shape5, this.canvasik)}>
+                    <img src={Shape5} />
                   </div>
                 </div>
                 : null}
@@ -730,17 +730,17 @@ class CanvasPreview extends PureComponent {
               <CanvasTool source={ClipArts} name={'CLIPARTS'} height={24} />
               {this.state.showCliparts ?
                 <div className='shapes-list'>
-                  <div onClick={() => this.addShapeImage(arts1, this.canvasik)}>
-                    <img src={arts1} />
+                  <div onClick={() => this.addShapeImage(Arts1, this.canvasik)}>
+                    <img src={Arts1} />
                   </div>
-                  <div onClick={() => this.addShapeImage(arts2, this.canvasik)}>
-                    <img src={arts2} />
+                  <div onClick={() => this.addShapeImage(Arts2, this.canvasik)}>
+                    <img src={Arts2} />
                   </div>
-                  <div onClick={() => this.addShapeImage(arts3, this.canvasik)}>
-                    <img src={arts3} />
+                  <div onClick={() => this.addShapeImage(Arts1, this.canvasik)}>
+                    <img src={Arts1} />
                   </div>
-                  <div onClick={() => this.addShapeImage(arts4, this.canvasik)}>
-                    <img src={arts4} />
+                  <div onClick={() => this.addShapeImage(Arts2, this.canvasik)}>
+                    <img src={Arts2} />
                   </div>
                 </div>
                 : null}
@@ -749,17 +749,17 @@ class CanvasPreview extends PureComponent {
               <CanvasTool source={Emojis} name={'EMOJIS'} height={24} />
               {this.state.showEmojis ?
                 <div className='shapes-list'>
-                  <div onClick={() => this.addShapeImage(emoji1, this.canvasik)}>
-                    <img src={emoji1} />
+                  <div onClick={() => this.addShapeImage(Emoji1, this.canvasik)}>
+                    <img src={Emoji1} />
                   </div>
-                  <div onClick={() => this.addShapeImage(emoji2, this.canvasik)}>
-                    <img src={emoji2} />
+                  <div onClick={() => this.addShapeImage(Emoji2, this.canvasik)}>
+                    <img src={Emoji2} />
                   </div>
-                  <div onClick={() => this.addShapeImage(emoji3, this.canvasik)}>
-                    <img src={emoji3} />
+                  <div onClick={() => this.addShapeImage(Emoji3, this.canvasik)}>
+                    <img src={Emoji3} />
                   </div>
-                  <div onClick={() => this.addShapeImage(Emoji, this.canvasik)}>
-                    <img src={emoji4} />
+                  <div onClick={() => this.addShapeImage(Emoji4, this.canvasik)}>
+                    <img src={Emoji4} />
                   </div>
                 </div>
                 : null}

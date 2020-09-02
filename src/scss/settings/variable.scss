@@ -1,6 +1,4 @@
-$themes: (
-  light: (
-    colorBackground: white,
+$themes: (light: (colorBackground: white,
     colorBackgroundBody: #f2f4f7,
     colorHeaderDataPicker:#6db0ff,
     colorText: #646777,
@@ -18,8 +16,7 @@ $themes: (
     colorFitness: #646777,
     colorEmoji: #232329,
   ),
-  dark: (
-    colorBackground: #232329,
+  dark: (colorBackground: #232329,
     colorBackgroundBody: #2a2a31,
     colorHeaderDataPicker:#063263,
     colorText: #dddddd,
@@ -36,17 +33,21 @@ $themes: (
     colorScrollbar: #606071,
     colorFitness: #ffffff,
     colorEmoji: #ffffff,
-  )
-);
+  ));
 
 @mixin themify($themes) {
-  @each $theme, $map in $themes {
+
+  @each $theme,
+  $map in $themes {
     .theme-#{$theme} & {
       $theme-map: () !global;
-      @each $key, $submap in $map {
+
+      @each $key,
+      $submap in $map {
         $value: map-get(map-get($themes, $theme), '#{$key}');
         $theme-map: map-merge($theme-map, ($key: $value)) !global;
       }
+
       @content;
       $theme-map: null !global;
     }
@@ -92,9 +93,7 @@ $color-green: #b8e986;
 $color-green-hover: darken($color-green, 10%);
 
 
-$directions: (
-  ltr: (
-    direction: ltr,
+$directions: (ltr: (direction: ltr,
 
     right: right,
     left: left,
@@ -128,8 +127,7 @@ $directions: (
     sidebar-no-desktop: translateX(calc(0%)),
     '-': '-',
   ),
-  rtl: (
-    direction: rtl,
+  rtl: (direction: rtl,
 
     right: left,
     left: right,
@@ -159,19 +157,23 @@ $directions: (
     row: 'row-reverse',
 
     sidebar-close: translateX(0),
-    sidebar-no-desktop:  translateX(calc(100%)),
+    sidebar-no-desktop: translateX(calc(100%)),
     '-': '+',
-  )
-);
+  ));
 
 @mixin directify($directions) {
-  @each $direction, $map in $directions {
+
+  @each $direction,
+  $map in $directions {
     .#{$direction}-support & {
       $direction-map: () !global;
-      @each $key, $submap in $map {
+
+      @each $key,
+      $submap in $map {
         $value: map-get(map-get($directions, $direction), '#{$key}');
         $direction-map: map-merge($direction-map, ($key: $value)) !global;
       }
+
       @content;
       $direction-map: null !global;
     }

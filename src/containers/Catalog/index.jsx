@@ -6,16 +6,15 @@ import Category from "./components/category";
 
 const Catalog = (props) => (
   <Container className="dashboard">
-    {console.log(12, props.productArr.data)}
     <Row>
-      <Col md={12}>
+      <Col md={12} className="p-0">
         <Steps
           isActivebar={1}
         />
       </Col>
     </Row>
     <Row>
-      <Col md={12}>
+      <Col md={12} className="p-0">
         <Category
           productArr={props.productArr.data}
           filterCategory={props.filterCategory}

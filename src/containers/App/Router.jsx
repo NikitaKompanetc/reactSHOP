@@ -13,17 +13,15 @@ import ECommerce from '../ECommerce';
 import Orders from '../Orders';
 import LinkExisting from '../ExistLinkProducts';
 import BillingPage from '../Billing';
-
-
-const Pages = () => (
-  <Switch>
-    <Route path="/pages/one" component={ExamplePageOne} />
-    <Route path="/pages/two" component={ExamplePageTwo} />
-    <Route path="/catalog" component={CatalogSteps} />
-    <Route path="/dashboard" component={ECommerce} />
-    <Route path="/orders" component={Orders} />
-  </Switch>
-);
+// const Pages = () => (
+//   <Switch>
+//     <Route path="/pages/one" component={ExamplePageOne} />
+//     <Route path="/pages/two" component={ExamplePageTwo} />
+//     <Route path="/catalog" component={CatalogSteps} />
+//     <Route path="/dashboard" component={ECommerce} />
+//     <Route path="/orders" component={Orders} />
+//   </Switch>
+// );
 
 const CatalogSteps = () => (
   <Switch>
@@ -37,9 +35,9 @@ const wrappedRoutes = () => (
   <div>
     <Layout />
     <div className="container__wrap">
-      <Route path="/pages" component={Pages} />
-      <Route path="/catalog" component={CatalogSteps} />
+      <Route exact path="/" component={ECommerce} />
       <Route path="/dashboard" component={ECommerce} />
+      <Route path="/catalog" component={CatalogSteps} />
       <Route path="/orders" component={Orders} />
       <Route path="/link-existing-products" component={LinkExisting} />
       <Route path="/billing" component={BillingPage} />
@@ -51,8 +49,7 @@ const Router = () => (
   <MainWrapper>
     <main>
       <Switch>
-        <Route exact path="/" component={LogIn} />
-        <Route exact path="/log_in" component={LogIn} />
+        <Route path="/log_in" component={LogIn} />
         <Route path="/" component={wrappedRoutes} />
       </Switch>
     </main>

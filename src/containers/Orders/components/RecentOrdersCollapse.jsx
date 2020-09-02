@@ -12,7 +12,16 @@ export default class RecentOrdersCollapse extends Component {
     }
   }
   componentDidMount() {
-    this.getMessages();
+
+  }
+  componentDidUpdate(prevState, prevProps) {
+    // if (prevState.messages !== this.state.messages) {
+    // }
+    if (prevProps.messages !== this.props.messages) {
+    }
+  }
+  componentWillUnmount() {
+
   }
 
   getDate = (date) => {
@@ -23,26 +32,10 @@ export default class RecentOrdersCollapse extends Component {
   };
   changeMessage = (event) => {
     this.setState({ messageValue: event.target.value });
-    console.log(26, this.state.messageValue)
   }
-  getMessages = () => {
-    axios.get(
-      `https://a8ed81e6da8c.ngrok.io/api/printsterOrders/${this.props.id}?select=messages`, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-        'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjFlZjU4ZTI5MGIwNjM1YTRiYmY1NzkiLCJzaG9wTmFtZSI6IlByaW50c3RlclRlc3QiLCJzaG9wRW1haWwiOiJpbmZvQHNvbHZlZXRvLmRrIiwiaXNBZG1pbiI6dHJ1ZSwiYWNjZXNzVG9rZW4iOiJzaHBhdF82NDUwOTMzYTI4MmRmYzlmNTNhMWQ2NTYxOTYyNzAyMiIsInNob3BVcmwiOiJwcmludHN0ZXJ0ZXN0Lm15c2hvcGlmeS5jb20iLCJpYXQiOjE1OTU4NjUxNDN9.KbP1-46OB4Flq4o9fNLP6ncBXnlP1AXBaamiOLjMAqw',
-      }
-    }
-    ).then((data) => {
-      this.setState({
-        messages: data.data[0].messages
-      })
-      console.log(11, data)
-    });
-  }
+
   sendMessage = () => {
-    axios.put(`https://a8ed81e6da8c.ngrok.io/api/printsterOrders/addMessage/${this.props.id}`,
+    axios.put(`https://d3767e25b9e9.ngrok.io/api/printsterOrders/addMessage/${this.props.id}`,
       { "writing": this.state.messageValue },
       {
         headers: {
@@ -52,20 +45,20 @@ export default class RecentOrdersCollapse extends Component {
         }
       }
     )
+    this.setState({ messageValue: '' })
     this.getMessages();
-    console.log(44, 'sending')
   }
   render() {
-    const { title, data, id, openDetails, currentDetails } = this.props;
+    const { messages, data, id, openDetails, currentDetails } = this.props;
     return (
       <td colSpan="12">
         <Collapse style={{
           padding: "10px",
           border: "2px solid #dee2e6",
         }
-        } isOpen={currentDetails === data._id}>
+        } isOpen={currentDetails === data._id && openDetails === false}>
           <div className="billing-stats">
-            <div>
+            {/* <div>
               <div className="stats__head">Billing address</div>
               <div>
                 <div>Maria Robertson</div>
@@ -75,7 +68,7 @@ export default class RecentOrdersCollapse extends Component {
                 <div>+44 899388829</div>
                 <div>E-mail: Mroberts@pt.com</div>
               </div>
-            </div>
+            </div> */}
             <div>
               <div className="stats__head">Shipping address:</div>
               <div>
@@ -139,7 +132,7 @@ export default class RecentOrdersCollapse extends Component {
               </div>
               <div className="chat__area p-2">
                 <div className="chat__chat border-dark">
-                  {this.state.messages && this.state.messages.map(item => {
+                  {messages && messages.map(item => {
                     return <div>{this.getDate(item.time)}: {item.author} - {item.writing}</div>
                   })}
                 </div>

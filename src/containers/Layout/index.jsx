@@ -48,19 +48,9 @@ class Layout extends Component {
 
     return (
       <div className={layoutClass}>
-        {/* <Topbar
-          changeMobileSidebarVisibility={this.changeMobileSidebarVisibility}
-          changeSidebarVisibility={this.changeSidebarVisibility}
-        /> */}
         <TopbarWithNavigation
           changeMobileSidebarVisibility={this.changeMobileSidebarVisibility}
         />
-        {/* <Sidebar
-          sidebar={sidebar}
-          changeToDark={this.changeToDark}
-          changeToLight={this.changeToLight}
-          changeMobileSidebarVisibility={this.changeMobileSidebarVisibility}
-        /> */}
         <SidebarMobile
           sidebar={sidebar}
           changeToDark={this.changeToDark}

@@ -46,7 +46,7 @@ class Orders extends PureComponent {
 
   async componentDidMount() {
     const orders = await axios.get(
-      `https://a8ed81e6da8c.ngrok.io/api/printsterOrders/`,
+      `https://d3767e25b9e9.ngrok.io/api/printsterOrders/`,
       {
         headers: {
           'Access-Control-Allow-Origin': '*',
@@ -68,15 +68,12 @@ class Orders extends PureComponent {
 
   render() {
     const { t, newOrder, rtl } = this.props;
-    console.log(78, DataOrders)
-    console.log(79, this.state.ordersData)
     return (
       <Container className="dashboard">
         <Row>
           <Col md={12}>
             {/* <h3 className="page-title">{t("dashboard_orders.page_title")}</h3> */}
             <h3 className="page-title">Orders list</h3>
-            {/* <button onClick={() => this.test()}>test</button> */}
           </Col>
         </Row>
         <Row>

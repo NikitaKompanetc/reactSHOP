@@ -1,4 +1,4 @@
-import React , { PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import { Card, Container, Col, Row, CardBody } from 'reactstrap';
 import '../../../scss/component/catalogItem.scss';
 import Steps from './steps';
@@ -9,7 +9,7 @@ class DesignProduct extends PureComponent {
     return (
       <Container className="dashboard">
         <Row>
-          <Col md={12}>
+          <Col md={12} className="p-0">
             <Steps isActivebar={2} />
           </Col>
         </Row>

@@ -171,10 +171,6 @@ class FinalizeProduct extends PureComponent {
         sizesArr.push(element.option2)
       } else return
     });
-
-    console.log(127, colorsArr)
-    console.log(128, sizesArr)
-    console.log(91, compliteImage)
     let sendArray = {
       // "testP": idProduct,
       // "shopifyProductId": "",
@@ -206,9 +202,9 @@ class FinalizeProduct extends PureComponent {
 
 
     }
-    console.log(153, sendArray)
 
-    let requestUrl = "https://a8ed81e6da8c.ngrok.io";
+
+    let requestUrl = "https://d3767e25b9e9.ngrok.io";
     // sending the x-auth-token which has the accesstoken of shopify with the request.
     let config = {
       headers: {
@@ -239,7 +235,7 @@ class FinalizeProduct extends PureComponent {
     this.setState({
       sizeArray: middleArr
     })
-    console.log(54, this.state.sizeArray)
+
   }
 
 
@@ -327,7 +323,7 @@ class FinalizeProduct extends PureComponent {
     return (
       <Container className="dashboard">
         <Row>
-          <Col md={12}>
+          <Col md={12} className="p-0">
             <Steps isActivebar={3} />
           </Col>
         </Row>
@@ -353,15 +349,11 @@ class FinalizeProduct extends PureComponent {
                       <div className="first-block">Title</div>
                       <div>
                         <Input placeholder="Kids Polo - Design by" />
-                        {/* <input type='text' placeholder="Kids Polo - Design by" /> */}
                       </div>
                     </div>
                     <div className="option-block">
                       <div className="first-block">Description</div>
                       <div>
-                        {/* <textarea rows="10" cols="45" placeholder="100% Polyester">
-
-                        </textarea> */}
                         <TextArea rows={4} placeholder="100% Polyester" />
                       </div>
                     </div>
@@ -402,7 +394,6 @@ class FinalizeProduct extends PureComponent {
             <div onClick={this.createProduct}>
               <CatalogBtn nameButton={'Create'} />
             </div>
-            {/* <button onClick={() => this.test()}>test</button> */}
           </div>
         </Row>
       </Container>

@@ -11,7 +11,7 @@ const ManageProductsItem = (props) => (
           <div className="products__title">{props.titleProduct}</div>
           <Link to={props.link}>
             <div className="products__image">
-              <img src={props.imageProduct} height={216} />
+              <img className="products__image-link" src={props.imageProduct} />
             </div>
             <div className="products__btn">
               <button>{props.nameProductButton}</button>

@@ -11,7 +11,7 @@ const BillingTransactions = (props) => {
     <>
       <div className="billing-table">
         <div className="transaction-table">
-          <div className="head-table-transaction">
+          <div className="head-table-transaction font-weight-bold">
             <div>VAT</div>
             <div>currency</div>
             <div>date</div>

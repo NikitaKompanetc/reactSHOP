@@ -2,6 +2,8 @@
   @include directify($directions) {
     #{directed('padding-left')}: 10px;
   }
+
+  border-color: #ffffff;
 }
 
 .tabs {
@@ -92,7 +94,7 @@
     .nav-tabs {
       li .nav-link {
         border-color: transparent;
-        border-bottom: 1px solid transparent;
+        border-bottom: 2px solid transparent;
         padding-bottom: 11px;
       }
 
@@ -189,6 +191,10 @@
           color: $color-additional;
         }
       }
+    }
+
+    .topbar__btn svg {
+      fill: #fff !important;
     }
 
     .tab-pane {

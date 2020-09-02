@@ -8,6 +8,7 @@
   }
 
   .products__image {
+    height: calc(170px + 10px);
 
     img {
       width: auto;
@@ -35,4 +36,11 @@
 
 .product-manage-containers {
   padding: 0;
+}
+
+@media (max-width: 1280px) {
+  .dashboard-manage-products .products__image img {
+    height: 120px;
+    width: calc(140px + 10px);
+  }
 }

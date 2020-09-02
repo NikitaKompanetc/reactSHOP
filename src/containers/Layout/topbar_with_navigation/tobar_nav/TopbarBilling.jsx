@@ -6,7 +6,7 @@ const TopBarBilling = () => {
   return (
     <div className="topbar__collapse">
       <div className="topbar__btn" style={{ fontSize: 8 }}>
-        <Link to="/billing"><SettingOutlined /></Link>
+        <Link to="/billing"><SettingOutlined style={{ color: '#fff' }} /></Link>
       </div>
     </div>
   );

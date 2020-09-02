@@ -15,14 +15,16 @@
   }
 
   .progress-bar {
-    background-color: $color-accent;
+    background-color: $color-rust-orange;
     color: #646777;
     box-shadow: none;
     height: 4px;
+
     @include directify($directions) {
       text-align: directed('right');
       #{directed('padding-right')}: 10px;
     }
+
     font-size: 9px;
     line-height: 13px;
   }
@@ -61,6 +63,7 @@
       height: 16px;
     }
   }
+
   &.progress-wrap--rounded {
 
     .progress-bar {
@@ -90,6 +93,17 @@
     }
   }
 
+  &.progress-wrap--orange {
+
+    .progress-bar {
+      background-color: $color-rust-orange;
+    }
+
+    .progress__label {
+      color: $color-additional;
+    }
+  }
+
   &.progress-wrap--pink {
 
     .progress-bar {
@@ -101,7 +115,7 @@
     }
   }
 
-  &.progress-wrap--red{
+  &.progress-wrap--red {
     .progress-bar {
       background-color: $color-excite-red;
     }
@@ -148,6 +162,7 @@
 
     .progress__label {
       position: absolute;
+
       @include directify($directions) {
         #{directed('right')}: 0px;
       }

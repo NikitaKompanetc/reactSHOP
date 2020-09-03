@@ -384,7 +384,7 @@ class CanvasPreview extends PureComponent {
     this.addColors = () => {
       canvas.requestRenderAll();
       localStorage.setItem('canvas', JSON.stringify(canvas));
-      window.location.href = '/catalog/product/step/3';
+      //window.location.href = '/catalog/product/step/3';
     };
     // this.getIndex = () => {
     //   var activeObj = canvas.getActiveObject();
@@ -691,7 +691,7 @@ class CanvasPreview extends PureComponent {
       <div>
         <div className="navigation-canvas">
           <button className='simple-btn' onClick={this.clearStorage} >Clear</button>
-          <button className='simple-btn' onClick={() => this.addColors(this.canvasik, this.state.currentColor)}>Next step</button>
+          <Link to="/catalog/product/step/3"> <button className='simple-btn' onClick={() => this.addColors(this.canvasik, this.state.currentColor)}>Next step</button></Link>
         </div>
         <div className='canvas--container'>
           <div className="tools-canvas-container">

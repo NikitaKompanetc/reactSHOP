@@ -4,8 +4,6 @@ import Layout from '../Layout/index';
 import MainWrapper from './MainWrapper';
 
 import LogIn from '../LogIn/index';
-import ExamplePageOne from '../Example/index';
-import ExamplePageTwo from '../ExampleTwo/index';
 import ContainerCatalog from '../Catalog/ContainerCatalog';
 import DesignProduct from '../Catalog/components/designProduct';
 import FinalizeProduct from '../Catalog/components/finalizeProduct';

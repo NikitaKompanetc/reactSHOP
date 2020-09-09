@@ -1,0 +1,49 @@
+.product-management {
+
+  .item-image {
+    height: 36px;
+    width: 36px;
+    margin-right: 10px;
+  }
+
+  .product-btn {
+    margin: 2rem;
+    width: auto;
+    background: #e6e6e6;
+  }
+
+  .chosen-product-area {
+    width: 100%;
+    height: 280px;
+    background: #e6e6e6;
+  }
+
+  .ant-collapse,
+  .ant-collapse-content-box {
+    background: #e6e6e6;
+  }
+
+  .save-btn {
+    width: 8rem;
+    height: 3rem;
+    background: #004B60;
+    color: #fff;
+  }
+
+  .set-price {
+    width: 60%;
+    background: transparent;
+    border: solid 1px #9b9b9b;
+  }
+
+  .size-custom {
+    background: #e6e6e6;
+    height: 6rem;
+    padding: 15px;
+  }
+
+  .size-custom-1 {
+    background: #e6e6e6;
+    padding: 15px;
+  }
+}

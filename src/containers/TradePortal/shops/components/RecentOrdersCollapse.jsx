@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Collapse } from "reactstrap";
-import { Table } from "reactstrap";
-import axiosConfig from '../../../axiosConfig';
+import { Badge, Table } from "reactstrap";
+import axios from "axios";
 export default class RecentOrdersCollapse extends Component {
 
   constructor(props) {
@@ -12,11 +12,10 @@ export default class RecentOrdersCollapse extends Component {
     }
   }
   componentDidMount() {
-    this.getMessages(this.props.id);
+
   }
   componentDidUpdate(prevState, prevProps) {
-    if (prevState.messages !== this.state.messages) {
-
+    if (prevProps.messages !== this.props.messages) {
     }
   }
   componentWillUnmount() {
@@ -32,18 +31,20 @@ export default class RecentOrdersCollapse extends Component {
   changeMessage = (event) => {
     this.setState({ messageValue: event.target.value });
   }
-  getMessages = (id) => {
-    axiosConfig.get(`/api/printsterOrders/${id}?select=messages`)
-      .then((data) => {
-        this.setState({ messages: data.data[0].messages })
-      });
-  }
 
   sendMessage = () => {
-    axiosConfig.put(`/api/printsterOrders/addMessage/${this.props.id}`,
+    axios.put(`https://d3767e25b9e9.ngrok.io/api/printsterOrders/addMessage/${this.props.id}`,
       { "writing": this.state.messageValue },
+      {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjFlZjU4ZTI5MGIwNjM1YTRiYmY1NzkiLCJzaG9wTmFtZSI6IlByaW50c3RlclRlc3QiLCJzaG9wRW1haWwiOiJpbmZvQHNvbHZlZXRvLmRrIiwiaXNBZG1pbiI6dHJ1ZSwiYWNjZXNzVG9rZW4iOiJzaHBhdF82NDUwOTMzYTI4MmRmYzlmNTNhMWQ2NTYxOTYyNzAyMiIsInNob3BVcmwiOiJwcmludHN0ZXJ0ZXN0Lm15c2hvcGlmeS5jb20iLCJpYXQiOjE1OTU4NjUxNDN9.KbP1-46OB4Flq4o9fNLP6ncBXnlP1AXBaamiOLjMAqw',
+        }
+      }
     )
     this.setState({ messageValue: '' })
+    this.getMessages();
   }
   render() {
     const { messages, data, id, openDetails, currentDetails } = this.props;
@@ -55,6 +56,17 @@ export default class RecentOrdersCollapse extends Component {
         }
         } isOpen={currentDetails === data._id && openDetails === false}>
           <div className="billing-stats">
+            <div>
+              <div className="stats__head">Billing address</div>
+              <div>
+                <div>Maria Robertson</div>
+                <div>99 Shriley Ave.</div>
+                <div>London</div>
+                <div>EJHM99</div>
+                <div>+44 899388829</div>
+                <div>E-mail: Mroberts@pt.com</div>
+              </div>
+            </div>
             <div>
               <div className="stats__head">Shipping address:</div>
               <div>
@@ -71,6 +83,9 @@ export default class RecentOrdersCollapse extends Component {
               <div>99283</div>
             </div>
             <div className="stats__buttons">
+              <div>
+                <button className="stats__btn_status">Edit Order</button>
+              </div>
               <div>
                 <button className="stats__btn_status">Status</button>
               </div>
@@ -118,7 +133,7 @@ export default class RecentOrdersCollapse extends Component {
               </div>
               <div className="chat__area p-2">
                 <div className="chat__chat border-dark">
-                  {this.state.messages && this.state.messages.map(item => {
+                  {messages && messages.map(item => {
                     return <div>{this.getDate(item.time)}: {item.author} - {item.writing}</div>
                   })}
                 </div>

@@ -56,7 +56,8 @@ const RecentOrders = ({ t, ...props }) => {
   }, [props.ordersData]);
 
   return (
-    <Panel lg={12} title={t("dashboard_orders.orders_list")}>
+    <Panel lg={12} title={t("Order list")}>
+      <div className="d-flex justify-content-end"><button className='details-btn'>Add order</button></div>
       <SelectPagination pagination={props.pagination} style={{ width: 'auto' }} />
       <Table responsive className="table--bordered">
         <thead>
